@@ -1,5 +1,5 @@
-import { Counter } from '@features/counter/Counter'
-import { UserList } from '@features/counter/UserList'
+import { Counter } from '@components/Counter'
+import { UserList } from '@components/UserList'
 
 export const HomePage: React.FC = () => {
   return (
