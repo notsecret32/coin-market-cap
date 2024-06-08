@@ -1,7 +1,7 @@
-import { HomePage } from '@views/HomePage';
+import { HomePage } from '@views/HomePage'
 
 function App() {
-  return <HomePage />;
+  return <HomePage />
 }
 
-export default App;
+export default App
