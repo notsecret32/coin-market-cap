@@ -1,6 +1,6 @@
 {
-  "extends": "./tsconfig.path.json",
   "compilerOptions": {
+    "baseUrl": ".",
     "allowJs": true,
     "checkJs": false,
     "skipLibCheck": true,

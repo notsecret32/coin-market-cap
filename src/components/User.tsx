@@ -1,4 +1,4 @@
-import { IUser } from '@api/usersApi'
+import { IUser } from 'src/api/usersApi'
 
 export const User = ({ id, name, username }: IUser) => {
   return (

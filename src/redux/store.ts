@@ -1,7 +1,7 @@
-import { usersApi } from '@api/usersApi'
 import { configureStore } from '@reduxjs/toolkit'
 import { setupListeners } from '@reduxjs/toolkit/query'
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
+import { usersApi } from 'src/api/usersApi'
 import { counterSlice } from './slices/counterSlice'
 
 export const store = configureStore({

@@ -1,4 +1,4 @@
-import { useGetUsersQuery } from '@api/usersApi'
+import { useGetUsersQuery } from 'src/api/usersApi'
 import { User } from './User'
 
 export const UserList = () => {

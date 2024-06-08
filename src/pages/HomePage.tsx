@@ -1,5 +1,4 @@
-import { Counter } from '@components/Counter'
-import { UserList } from '@components/UserList'
+import { Counter, UserList } from 'src/components'
 
 export const HomePage: React.FC = () => {
   return (

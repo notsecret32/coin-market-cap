@@ -1,5 +1,5 @@
-import { decrement, increment } from '@redux/slices/counterSlice'
-import { useAppDispatch, useAppSelector } from '@redux/store'
+import { decrement, increment } from 'src/redux/slices/counterSlice'
+import { useAppDispatch, useAppSelector } from 'src/redux/store'
 
 export const Counter = () => {
   const count = useAppSelector((state) => state.counter.count)
