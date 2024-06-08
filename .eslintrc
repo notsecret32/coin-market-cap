@@ -4,35 +4,22 @@
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
     "prettier",
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
   ],
   "settings": {
     "react": {
-      "version": "detect"
-    }
+      "version": "detect",
+    },
   },
   "rules": {
-    "eqeqeq": "error",
-    "no-eval": "error",
-    "no-unused-vars": "warn",
-    "no-implicit-globals": "error",
-    "indent": ["error", 2],
-    "quotes": ["error", "single"],
-    "no-multi-spaces": "error",
-    "no-delete-var": "error",
-    "no-shadow": "warn",
-    "prefer-const": "error",
-    "no-var": "error",
-    "react/prop-types": "warn",
-    "react/no-array-index-key": "warn",
-    "react/react-in-jsx-scope": "off",
-    "@typescript-eslint/no-unused-vars": "warn",
-    "@typescript-eslint/explicit-function-return-type": "warn",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "react/no-unescaped-entities": "off",
     "prettier/prettier": [
       "error",
       {
-        "endOfLine": "auto"
-      }
-    ]
-  }
+        "singleQuote": true,
+        "semi": false,
+      },
+    ],
+  },
 }
