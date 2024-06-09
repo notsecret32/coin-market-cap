@@ -1,5 +1,5 @@
 import { useGetPopularCoinsListQuery } from 'src/api/coinsListApi'
-import { CoinsTable } from 'src/components/CoinsTable'
+import { CoinsTable } from 'src/components'
 
 export const HomePage = () => {
   const { data, error, isLoading, isError } = useGetPopularCoinsListQuery()
