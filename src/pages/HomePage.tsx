@@ -1,15 +1,22 @@
-import { useGetKeyInfoStatusQuery } from 'src/api/keyInfoApi'
-import { Counter, UserList } from 'src/components'
+import { useGetPopularCoinsListQuery } from 'src/api/coinsListApi'
+import { CoinsTable } from 'src/components/CoinsTable'
 
-export const HomePage: React.FC = () => {
-  const { data } = useGetKeyInfoStatusQuery()
+export const HomePage = () => {
+  const { data, error, isLoading, isError } = useGetPopularCoinsListQuery()
+
+  if (isError) {
+    console.log(error)
+  }
 
   return (
     <main>
-      <h1 className="text-3xl font-bold underline">Coin Market Cap</h1>
-      {JSON.stringify(data, null, 2)}
-      <Counter />
-      <UserList />
+      {error ? (
+        <>Error...</>
+      ) : isLoading ? (
+        <>Loading...</>
+      ) : (
+        <>{data && <CoinsTable coins={data.data} />}</>
+      )}
     </main>
   )
 }

@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { IError } from 'src/types/error'
+import { IApiError } from 'src/types'
 
 export const keyInfoApi = createApi({
   reducerPath: 'keyInfoApi',
@@ -13,7 +13,7 @@ export const keyInfoApi = createApi({
     },
   }),
   endpoints: (builder) => ({
-    getKeyInfoStatus: builder.query<IError, void>({
+    getKeyInfoStatus: builder.query<IApiError, void>({
       query: () => '/v1/key/info',
     }),
   }),
