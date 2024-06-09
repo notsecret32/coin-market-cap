@@ -25,7 +25,7 @@ const transformResponse = (response: any): IApiTrendingCoins => {
 }
 
 export const coinsListApi = createApi({
-  reducerPath: 'popularCoinsListApi',
+  reducerPath: 'coinsListApi',
   baseQuery: trkBaseQuery(),
   endpoints: (builder) => ({
     getCoinsList: builder.query<IApiTrendingCoins, void>({
