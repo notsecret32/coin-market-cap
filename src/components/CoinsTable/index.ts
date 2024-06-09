@@ -8,10 +8,10 @@ import { CoinRow } from './CoinRow'
 
 export {
   CoinCapitalization,
+  CoinLikeButton,
   CoinName,
   CoinNumber,
   CoinPercentChange,
   CoinPrice,
   CoinRow,
-  CoinLikeButton as CoinStar,
 }

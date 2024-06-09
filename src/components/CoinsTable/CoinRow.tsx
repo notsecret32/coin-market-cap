@@ -1,10 +1,10 @@
 import {
   CoinCapitalization,
+  CoinLikeButton,
   CoinName,
   CoinNumber,
   CoinPercentChange,
   CoinPrice,
-  CoinStar,
 } from 'src/components/CoinsTable'
 
 interface ICoinRowProps {
@@ -28,7 +28,7 @@ export const CoinRow = ({
 }: ICoinRowProps) => {
   return (
     <tr key={id} className="border-b border-[#f0f1f6]">
-      <CoinStar />
+      <CoinLikeButton />
       <CoinNumber number={number} />
       <CoinName id={id} name={name} symbol={symbol} />
       <CoinPrice price={price} />
