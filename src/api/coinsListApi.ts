@@ -9,6 +9,7 @@ const transformResponse = (response: any): IApiTrendingCoins => {
     symbol: coin.symbol,
     slug: coin.slug,
     price: coin.quote.USD.price,
+    capitalization: coin.quote.USD.market_cap,
     percentChange24h: coin.quote.USD.percent_change_24h,
   }))
 
@@ -28,7 +29,7 @@ export const coinsListApi = createApi({
   baseQuery: trkBaseQuery(),
   endpoints: (builder) => ({
     getPopularCoinsList: builder.query<IApiTrendingCoins, void>({
-      query: () => '/v1/cryptocurrency/listings/latest',
+      query: () => '/v1/cryptocurrency/listings/latest?price_min=0.01',
       transformResponse,
     }),
   }),

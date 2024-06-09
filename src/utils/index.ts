@@ -1,3 +1,4 @@
+import { formatNumber } from './format-number'
 import { trkBaseQuery } from './rtk-base-query'
 
-export { trkBaseQuery }
+export { formatNumber, trkBaseQuery }

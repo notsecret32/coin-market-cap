@@ -4,5 +4,6 @@ export interface IApiCoin {
   symbol: string
   slug: string
   price: number
+  capitalization: number
   percentChange24h: number
 }

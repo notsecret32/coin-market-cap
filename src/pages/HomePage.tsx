@@ -10,13 +10,15 @@ export const HomePage = () => {
 
   return (
     <main>
-      {error ? (
-        <>Error...</>
-      ) : isLoading ? (
-        <>Loading...</>
-      ) : (
-        <>{data && <CoinsTable coins={data.data} />}</>
-      )}
+      <div className="container mx-auto">
+        {error ? (
+          <h1>Error...</h1>
+        ) : isLoading ? (
+          <h1>Loading...</h1>
+        ) : (
+          <>{data && <CoinsTable coins={data.data} />}</>
+        )}
+      </div>
     </main>
   )
 }

@@ -1,3 +1,3 @@
-import { CoinsTable } from './CoinsTable'
+import { CoinsTable } from './CoinsTable/CoinsTable'
 
 export { CoinsTable }
