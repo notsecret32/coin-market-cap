@@ -28,11 +28,11 @@ export const coinsListApi = createApi({
   reducerPath: 'popularCoinsListApi',
   baseQuery: trkBaseQuery(),
   endpoints: (builder) => ({
-    getPopularCoinsList: builder.query<IApiTrendingCoins, void>({
+    getCoinsList: builder.query<IApiTrendingCoins, void>({
       query: () => '/v1/cryptocurrency/listings/latest?price_min=0.01',
       transformResponse,
     }),
   }),
 })
 
-export const { useGetPopularCoinsListQuery } = coinsListApi
+export const { useGetCoinsListQuery } = coinsListApi
