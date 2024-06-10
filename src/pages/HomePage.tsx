@@ -1,5 +1,5 @@
 import { useGetCoinsListQuery } from 'src/api/coinsListApi'
-import { CoinsTable } from 'src/components'
+import { Button, CoinsTable } from 'src/components'
 import { SortingTableEnum } from 'src/enums'
 import { useAppSelector } from 'src/redux/store'
 
@@ -44,7 +44,13 @@ export const HomePage = () => {
         ) : isLoading ? (
           <h1>Loading...</h1>
         ) : (
-          <CoinsTable coins={sortedData} />
+          <>
+            <CoinsTable coins={sortedData} />
+            <div className="flex flex-row justify-center items-center gap-4 my-4">
+              <Button>Пред. страница</Button>
+              <Button>След. страница</Button>
+            </div>
+          </>
         )}
       </div>
     </main>
