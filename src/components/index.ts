@@ -1,3 +1,4 @@
+import { Button } from './Button'
 import { CoinsTable } from './CoinsTable/CoinsTable'
 
-export { CoinsTable }
+export { Button, CoinsTable }

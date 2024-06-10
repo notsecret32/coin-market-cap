@@ -1,16 +1,46 @@
 import { useGetCoinsListQuery } from 'src/api/coinsListApi'
-import { CoinsTable } from 'src/components'
+import { Button, CoinsTable } from 'src/components'
 import { SortingTableEnum } from 'src/enums'
-import { useAppSelector } from 'src/redux/store'
+import {
+  nextPage,
+  previousPage,
+  setEndReached,
+} from 'src/redux/slices/homePageSlice'
+import { useAppDispatch, useAppSelector } from 'src/redux/store'
 
 export const HomePage = () => {
-  const { data, error, isLoading, isError } = useGetCoinsListQuery()
+  const { start, limits, isStartReached, isEndReached } = useAppSelector(
+    (state) => state.homePageSlice,
+  )
   const { columnId, sortingType } = useAppSelector(
     (state) => state.sortingTableSlice,
   )
+  const dispatch = useAppDispatch()
+
+  const { data, error, isLoading, isError } = useGetCoinsListQuery({
+    start,
+  })
 
   if (isError) {
     console.log(error)
+  }
+
+  const handleNextPage = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault()
+    dispatch(nextPage())
+
+    if (data?.data === undefined) {
+      return
+    }
+
+    data?.data.length < limits
+      ? dispatch(setEndReached({ isEndReacher: true }))
+      : dispatch(setEndReached({ isEndReacher: false }))
+  }
+
+  const handlePreviousPage = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault()
+    dispatch(previousPage())
   }
 
   const sortedData = data?.data?.slice().sort((a, b) => {
@@ -44,7 +74,23 @@ export const HomePage = () => {
         ) : isLoading ? (
           <h1>Loading...</h1>
         ) : (
-          <CoinsTable coins={sortedData} />
+          <>
+            <CoinsTable coins={sortedData} />
+            <div className="flex flex-row justify-center items-center gap-4 my-4">
+              <Button
+                className={isStartReached ? 'hidden' : 'block'}
+                onClick={(e) => handlePreviousPage(e)}
+              >
+                Пред. страница
+              </Button>
+              <Button
+                className={isEndReached ? 'hidden' : 'block'}
+                onClick={(e) => handleNextPage(e)}
+              >
+                След. страница
+              </Button>
+            </div>
+          </>
         )}
       </div>
     </main>
