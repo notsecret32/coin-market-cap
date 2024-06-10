@@ -1,5 +1,3 @@
-import { Counter } from './Counter'
-import { User } from './User'
-import { UserList } from './UserList'
+import { CoinsTable } from './CoinsTable/CoinsTable'
 
-export { Counter, User, UserList }
+export { CoinsTable }
