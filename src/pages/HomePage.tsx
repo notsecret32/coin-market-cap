@@ -15,6 +15,10 @@ export const HomePage = () => {
 
   const sortedData = data?.data?.slice().sort((a, b) => {
     switch (columnId) {
+      case 1:
+        return sortingType === SortingTableEnum.Ascending
+          ? a.id - b.id
+          : b.id - a.id
       case 3:
         return sortingType === SortingTableEnum.Ascending
           ? a.price - b.price

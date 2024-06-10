@@ -20,7 +20,7 @@ const columns: ICoinHeaderData[] = [
     title: '#',
     style: 'text-left w-0 py-3 cursor-pointer',
     position: 'justify-start',
-    sortable: false,
+    sortable: true,
   },
   {
     id: 2,

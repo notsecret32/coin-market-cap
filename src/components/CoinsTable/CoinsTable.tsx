@@ -15,7 +15,7 @@ export const CoinsTable = ({ coins }: ICoinsTableProps) => {
           </thead>
           <tbody className="text-base font-semibold">
             {coins.map((coin, index) => (
-              <CoinRow key={index} number={index + 1} {...coin} />
+              <CoinRow key={index} {...coin} />
             ))}
           </tbody>
         </table>
