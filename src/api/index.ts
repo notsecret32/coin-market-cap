@@ -1,4 +1,3 @@
-import { keyInfoApi } from './keyInfoApi'
-import { usersApi } from './usersApi'
+import { coinsListApi } from './coinsListApi'
 
-export { keyInfoApi, usersApi }
+export { coinsListApi }

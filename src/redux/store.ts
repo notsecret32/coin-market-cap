@@ -1,20 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { setupListeners } from '@reduxjs/toolkit/query'
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
-import { keyInfoApi } from 'src/api/keyInfoApi'
-import { usersApi } from 'src/api/usersApi'
-import { counterSlice } from './slices/counterSlice'
+import { coinsListApi } from 'src/api/coinsListApi'
 
 export const store = configureStore({
   reducer: {
-    [usersApi.reducerPath]: usersApi.reducer,
-    [keyInfoApi.reducerPath]: keyInfoApi.reducer,
-    counter: counterSlice.reducer,
+    [coinsListApi.reducerPath]: coinsListApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware()
-      .concat(usersApi.middleware)
-      .concat(keyInfoApi.middleware),
+    getDefaultMiddleware().concat(coinsListApi.middleware),
 })
 
 setupListeners(store.dispatch)
