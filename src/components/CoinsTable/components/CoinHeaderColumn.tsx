@@ -1,8 +1,21 @@
 interface ICoinHeaderColumnProps {
+  id: number
   title?: string
   style: string
 }
 
-export const CoinHeaderColumn = ({ title, style }: ICoinHeaderColumnProps) => {
-  return <th className={style}>{title}</th>
+export const CoinHeaderColumn = ({
+  id,
+  title,
+  style,
+}: ICoinHeaderColumnProps) => {
+  const onColumnClick = () => {
+    console.log(`Clicked on ${title} (${id})`)
+  }
+
+  return (
+    <th className={style} onClick={() => onColumnClick()}>
+      {title}
+    </th>
+  )
 }
