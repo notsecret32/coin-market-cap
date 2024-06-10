@@ -9,7 +9,6 @@ import {
 
 interface ICoinRowProps {
   id: number
-  number: number
   name: string
   symbol: string
   price: number
@@ -20,7 +19,6 @@ interface ICoinRowProps {
 export const CoinRow = ({
   id,
   name,
-  number,
   percentChange24h,
   price,
   capitalization,
@@ -29,7 +27,7 @@ export const CoinRow = ({
   return (
     <tr key={id} className="border-b border-[#f0f1f6]">
       <CoinLikeButton />
-      <CoinNumber number={number} />
+      <CoinNumber number={id} />
       <CoinName id={id} name={name} symbol={symbol} />
       <CoinPrice price={price} />
       <CoinCapitalization capitalization={capitalization} />
