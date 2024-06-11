@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import {
   CoinCapitalization,
   CoinLikeButton,
@@ -11,6 +12,7 @@ interface ICoinRowProps {
   id: number
   name: string
   symbol: string
+  slug: string
   price: number
   capitalization: number
   percentChange24h: number
@@ -23,9 +25,20 @@ export const CoinRow = ({
   price,
   capitalization,
   symbol,
+  slug,
 }: ICoinRowProps) => {
+  const navigate = useNavigate()
+
+  const navigateToPage = (slug: string) => {
+    navigate(`/currencies/${slug}`)
+  }
+
   return (
-    <tr key={id} className="border-b border-[#f0f1f6]">
+    <tr
+      key={id}
+      className="border-b border-[#f0f1f6] hover:bg-[#c5c5ca] cursor-pointer"
+      onClick={() => navigateToPage(slug)}
+    >
       <CoinLikeButton />
       <CoinNumber number={id} />
       <CoinName id={id} name={name} symbol={symbol} />
