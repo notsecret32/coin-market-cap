@@ -13,6 +13,7 @@ const transformCoinInfo = ({
   response,
 }: ITransformProps): IApiResponse<IApiCoinInfo, IApiStatus> => {
   const data: IApiCoinInfo = {
+    id,
     name: response.data[id].name,
     symbol: response.data[id].symbol,
     imageUrl: response.data[id].logo,
