@@ -25,7 +25,7 @@ const columns: ICoinHeaderData[] = [
   {
     id: 2,
     title: 'Название',
-    style: 'text-left py-3 cursor-pointer',
+    style: 'text-left py-3 cursor-pointer sm:table-cell hidden',
     position: 'justify-start',
     sortable: false,
   },
