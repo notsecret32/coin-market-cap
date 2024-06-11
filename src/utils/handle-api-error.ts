@@ -1,18 +1,14 @@
 import { SerializedError } from '@reduxjs/toolkit'
 import { FetchBaseQueryError } from '@reduxjs/toolkit/query'
 
-interface IHandleApiErrorProps {
-  error: FetchBaseQueryError | SerializedError | undefined
-}
-
 interface IHandleApiErrorReturn {
   isError: boolean
   message?: string
 }
 
-export const handleApiError = ({
-  error,
-}: IHandleApiErrorProps): IHandleApiErrorReturn => {
+export const handleApiError = (
+  error: FetchBaseQueryError | SerializedError | undefined,
+): IHandleApiErrorReturn => {
   if (error === undefined) {
     return {
       isError: false,

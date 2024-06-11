@@ -7,7 +7,7 @@ interface IErrorProps {
 }
 
 export const Error = ({ error }: IErrorProps) => {
-  const { message } = handleApiError({ error })
+  const { message } = handleApiError(error)
 
   return (
     <div className="bg-[#ebecf1] text-center py-32 mx-4 lg:mx-32 rounded-xl m-auto">
