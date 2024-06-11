@@ -3,6 +3,7 @@ import { IApiCoinInfo, IApiCoinMarketInfo } from 'src/types'
 interface ICoinDetailsProps extends IApiCoinInfo, IApiCoinMarketInfo {}
 
 export const CoinDetails = ({
+  id,
   name,
   symbol,
   imageUrl,
@@ -14,6 +15,7 @@ export const CoinDetails = ({
 }: ICoinDetailsProps) => {
   return (
     <div>
+      <p>{id}</p>
       <p>{name}</p>
     </div>
   )
