@@ -1,7 +1,25 @@
-import { useParams } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
+import { CoinDetails, Error, Loading } from 'src/components'
+import { useCoinDetails } from 'src/hooks'
 
 export const CoinDetailsPage = () => {
-  const { slug } = useParams()
+  const location = useLocation()
 
-  return <div className="container mx-auto">{slug}</div>
+  const { data, error, isLoading } = useCoinDetails({
+    id: location.state?.id,
+  })
+
+  return (
+    <main>
+      <div className="container mx-auto flex flex-col h-screen">
+        {isLoading ? (
+          <Loading />
+        ) : error ? (
+          <Error error={error} />
+        ) : (
+          <CoinDetails {...data} />
+        )}
+      </div>
+    </main>
+  )
 }
