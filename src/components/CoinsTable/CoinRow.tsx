@@ -30,7 +30,11 @@ export const CoinRow = ({
   const navigate = useNavigate()
 
   const navigateToPage = (slug: string) => {
-    navigate(`/currencies/${slug}`)
+    navigate(`/currencies/${slug}/`, {
+      state: {
+        id,
+      },
+    })
   }
 
   return (
