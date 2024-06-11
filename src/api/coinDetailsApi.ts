@@ -1,10 +1,5 @@
 import { createApi } from '@reduxjs/toolkit/query/react'
-import {
-  IApiCoinGraphData,
-  IApiCoinInfo,
-  IApiCoinMarketInfo,
-  IApiStatus,
-} from 'src/types'
+import { IApiCoinInfo, IApiCoinMarketInfo, IApiStatus } from 'src/types'
 import { IApiResponse } from 'src/types/api-response'
 import { getApiStatusResponse, trkBaseQuery } from 'src/utils'
 
@@ -48,37 +43,6 @@ const transformCoinMarketInfo = ({
   return { data, status }
 }
 
-const transformCoinGraphData = (
-  response: any,
-): IApiResponse<IApiCoinGraphData, IApiStatus> => {
-  const data: IApiCoinGraphData = {
-    id: response.data.id,
-    name: response.data.name,
-    symbol: response.data.symbol,
-    graph: response.data.quotes.map((graph: any) => ({
-      time: {
-        open: graph.time_open.toISOString(),
-        close: graph.time_close.toISOString(),
-        high: graph.time_high.toISOString(),
-        low: graph.time_low.toISOString(),
-      },
-      price: {
-        open: graph.quote.USD.open,
-        close: graph.quote.USD.close,
-        high: graph.quote.USD.high,
-        low: graph.quote.USD.low,
-        volume: graph.quote.USD.volume,
-        capitalization: graph.quote.USD.capitalization,
-        timestamp: graph.quote.USD.timestamp.toISOString(),
-      },
-    })),
-  }
-
-  const status: IApiStatus = getApiStatusResponse(response)
-
-  return { data, status }
-}
-
 export const coinDetailsApi = createApi({
   reducerPath: 'coinDetailsApi',
   baseQuery: trkBaseQuery(),
@@ -99,18 +63,7 @@ export const coinDetailsApi = createApi({
       transformResponse: (response, _, { id }) =>
         transformCoinMarketInfo({ id, response }),
     }),
-    getCoinGraphData: builder.query<
-      IApiResponse<IApiCoinGraphData, IApiStatus>,
-      { id: number }
-    >({
-      query: ({ id }) => `/v2/cryptocurrency/ohlcv/historical?id=${id}`,
-      transformResponse: (response) => transformCoinGraphData(response),
-    }),
   }),
 })
 
-export const {
-  useGetCoinInfoQuery,
-  useGetCoinMarketInfoQuery,
-  useGetCoinGraphDataQuery,
-} = coinDetailsApi
+export const { useGetCoinInfoQuery, useGetCoinMarketInfoQuery } = coinDetailsApi

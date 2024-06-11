@@ -1,5 +1,4 @@
 import {
-  useGetCoinGraphDataQuery,
   useGetCoinInfoQuery,
   useGetCoinMarketInfoQuery,
 } from 'src/api/coinDetailsApi'
@@ -21,24 +20,16 @@ export const useCoinDetails = ({ id }: IUseCoinDetails) => {
     error: coinMarketInfoError,
     isLoading: isCoinMarketInfoLoading,
   } = useGetCoinMarketInfoQuery({ id })
-  const {
-    data: coinGraphData,
-    error: coinGraphDataError,
-    isLoading: isCoinGraphDataLoading,
-  } = useGetCoinGraphDataQuery({ id })
 
   return {
     data: {
       ...coinInfoData?.data,
       ...coinMarketData?.data,
-      ...coinGraphData?.data,
     },
     error: {
       ...coinInfoError,
       ...coinMarketInfoError,
-      ...coinGraphDataError,
     },
-    isLoading:
-      isCoinInfoLoading && isCoinMarketInfoLoading && isCoinGraphDataLoading,
+    isLoading: isCoinInfoLoading && isCoinMarketInfoLoading,
   }
 }
