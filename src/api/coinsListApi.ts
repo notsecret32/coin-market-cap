@@ -1,8 +1,10 @@
 import { createApi } from '@reduxjs/toolkit/query/react'
-import { IApiCoin, IApiError, IApiTrendingCoins } from 'src/types'
-import { trkBaseQuery } from 'src/utils'
+import { IApiCoin, IApiResponse, IApiStatus } from 'src/types'
+import { getApiStatusResponse, trkBaseQuery } from 'src/utils'
 
-const transformResponse = (response: any): IApiTrendingCoins => {
+const transformResponse = (
+  response: any,
+): IApiResponse<IApiCoin[], IApiStatus> => {
   const transformedData: IApiCoin[] = response.data.map((coin: any) => ({
     id: coin.id,
     name: coin.name,
@@ -13,13 +15,7 @@ const transformResponse = (response: any): IApiTrendingCoins => {
     percentChange24h: coin.quote.USD.percent_change_24h,
   }))
 
-  const transformedStatus: IApiError = {
-    errorCore: response.status.error_code,
-    errorMessage: response.status.error_message,
-    elapsed: response.status.elapsed,
-    creditCount: response.status.credit_count,
-    notice: response.status.notice || '',
-  }
+  const transformedStatus: IApiStatus = getApiStatusResponse(response)
 
   return { data: transformedData, status: transformedStatus }
 }
@@ -28,7 +24,10 @@ export const coinsListApi = createApi({
   reducerPath: 'coinsListApi',
   baseQuery: trkBaseQuery(),
   endpoints: (builder) => ({
-    getCoinsList: builder.query<IApiTrendingCoins, { start?: number }>({
+    getCoinsList: builder.query<
+      IApiResponse<IApiCoin[], IApiStatus>,
+      { start?: number }
+    >({
       query: ({ start }) =>
         `/v1/cryptocurrency/listings/latest?price_min=0.01${start && `&start=${start}`}`,
       transformResponse,
