@@ -1,4 +1,4 @@
-import { Button, CoinsTable, Loading, Search } from 'src/components'
+import { Button, CoinsTable, Error, Loading, Search } from 'src/components'
 import { useCoinData } from 'src/hooks'
 import {
   nextPage,
@@ -15,10 +15,6 @@ export const HomePage = () => {
 
   const { data, sortedAndFilteredData, error, isLoading, isError } =
     useCoinData()
-
-  if (isError) {
-    console.log(error)
-  }
 
   const handleNextPage = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
@@ -42,7 +38,7 @@ export const HomePage = () => {
     <main>
       <div className="container mx-auto flex flex-col h-screen">
         {error ? (
-          <h1>Error...</h1>
+          <Error error={error} />
         ) : isLoading ? (
           <Loading />
         ) : (
