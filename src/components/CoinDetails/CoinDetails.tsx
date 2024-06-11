@@ -1,12 +1,8 @@
-import { IApiCoinGraphData, IApiCoinInfo, IApiCoinMarketInfo } from 'src/types'
+import { IApiCoinInfo, IApiCoinMarketInfo } from 'src/types'
 
-interface ICoinDetailsProps
-  extends IApiCoinInfo,
-    IApiCoinMarketInfo,
-    IApiCoinGraphData {}
+interface ICoinDetailsProps extends IApiCoinInfo, IApiCoinMarketInfo {}
 
 export const CoinDetails = ({
-  id,
   name,
   symbol,
   imageUrl,
@@ -15,11 +11,9 @@ export const CoinDetails = ({
   totalSupply,
   maxSupply,
   capitalization,
-  graph,
 }: ICoinDetailsProps) => {
   return (
     <div>
-      <p>{id}</p>
       <p>{name}</p>
     </div>
   )

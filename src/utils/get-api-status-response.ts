@@ -1,5 +1,5 @@
 export const getApiStatusResponse = (response: any) => ({
-  timestamp: new Date(response.status.timestamp),
+  timestamp: response.status.timestamp,
   errorCode: response.status.error_code,
   errorMessage: response.status.error_message,
   elapsed: response.status.elapsed,
