@@ -21,15 +21,14 @@ export const useCoinDetails = ({ id }: IUseCoinDetails) => {
     isLoading: isCoinMarketInfoLoading,
   } = useGetCoinMarketInfoQuery({ id })
 
+  const error = coinInfoError || coinMarketInfoError
+
   return {
     data: {
       ...coinInfoData?.data,
       ...coinMarketData?.data,
     },
-    error: {
-      ...coinInfoError,
-      ...coinMarketInfoError,
-    },
+    error,
     isLoading: isCoinInfoLoading && isCoinMarketInfoLoading,
   }
 }
