@@ -1,6 +1,6 @@
 {
   "name": "coin-market-cap",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.5",
