@@ -37,10 +37,10 @@ export const HomePage = () => {
   return (
     <main>
       <div className="container mx-auto flex flex-col h-screen">
-        {error ? (
-          <Error error={error} />
-        ) : isLoading ? (
+        {isLoading ? (
           <Loading />
+        ) : error ? (
+          <Error error={error} />
         ) : (
           <>
             <div className="my-3">
