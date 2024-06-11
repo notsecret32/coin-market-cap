@@ -1,5 +1,5 @@
 import { useGetCoinsListQuery } from 'src/api/coinsListApi'
-import { Button, CoinsTable } from 'src/components'
+import { Button, CoinsTable, Search } from 'src/components'
 import { SortingTableEnum } from 'src/enums'
 import {
   nextPage,
@@ -75,6 +75,9 @@ export const HomePage = () => {
           <h1>Loading...</h1>
         ) : (
           <>
+            <div className="my-3">
+              <Search />
+            </div>
             <CoinsTable coins={sortedData} />
             <div className="flex flex-row justify-center items-center gap-4 my-4">
               <Button
