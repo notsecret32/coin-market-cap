@@ -2,7 +2,7 @@ import { SerializedError } from '@reduxjs/toolkit'
 import { FetchBaseQueryError } from '@reduxjs/toolkit/query'
 
 interface IFetchBaseQueryError {
-  status?: {
+  status: {
     error_code: number
     error_message: string
   }
@@ -14,15 +14,20 @@ interface IErrorProps {
 
 export const Error = ({ error }: IErrorProps) => {
   const getErrorMessage = (): string => {
-    if (error && 'status' in error) {
-      const { status } = error.data as IFetchBaseQueryError
-      return status
-        ? `Ошибка ${status.error_code}: ${status.error_message}`
+    if (!error) {
+      return 'Произошла неизвестная ошибка'
+    }
+
+    if ('status' in error) {
+      const errorData = error.data as IFetchBaseQueryError | undefined
+
+      return errorData?.status
+        ? `Ошибка ${errorData.status.error_code}: ${errorData.status.error_message}`
         : 'Произошла неизвестная ошибка'
     }
 
-    if (error && 'message' in error) {
-      return `Ошибка ${error.code}: ${error.name}, ${error.message} | ${error.stack}`
+    if ('message' in error) {
+      return `Ошибка: ${error.message}`
     }
 
     return 'Произошла неизвестная ошибка'
