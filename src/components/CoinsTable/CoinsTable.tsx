@@ -7,9 +7,9 @@ interface ICoinsTableProps {
 
 export const CoinsTable = ({ coins }: ICoinsTableProps) => {
   return (
-    <>
+    <div className="overflow-x-auto lg:overflow-x-visible">
       {coins ? (
-        <table className="w-full">
+        <table className="w-full min-w-[600px]">
           <thead className="text-sm border-t border-b border-[#f0f1f6]">
             <CoinHeader />
           </thead>
@@ -22,6 +22,6 @@ export const CoinsTable = ({ coins }: ICoinsTableProps) => {
       ) : (
         <h1>Нет данных</h1>
       )}
-    </>
+    </div>
   )
 }
