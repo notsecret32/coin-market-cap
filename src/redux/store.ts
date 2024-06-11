@@ -2,13 +2,14 @@ import { configureStore } from '@reduxjs/toolkit'
 import { setupListeners } from '@reduxjs/toolkit/query'
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
 import { coinsListApi } from 'src/api/coinsListApi'
-import { homePageSlice, sortingTableSlice } from './slices'
+import { homePageSlice, searchCoinSlice, sortingTableSlice } from './slices'
 
 export const store = configureStore({
   reducer: {
     [coinsListApi.reducerPath]: coinsListApi.reducer,
     sortingTableSlice: sortingTableSlice.reducer,
     homePageSlice: homePageSlice.reducer,
+    searchCoinSlice: searchCoinSlice.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(coinsListApi.middleware),
