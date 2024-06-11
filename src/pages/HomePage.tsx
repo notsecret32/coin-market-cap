@@ -1,4 +1,4 @@
-import { Button, CoinsTable, Search } from 'src/components'
+import { Button, CoinsTable, Loading, Search } from 'src/components'
 import { useCoinData } from 'src/hooks'
 import {
   nextPage,
@@ -40,11 +40,11 @@ export const HomePage = () => {
 
   return (
     <main>
-      <div className="container mx-auto">
+      <div className="container mx-auto flex flex-col h-screen">
         {error ? (
           <h1>Error...</h1>
         ) : isLoading ? (
-          <h1>Loading...</h1>
+          <Loading />
         ) : (
           <>
             <div className="my-3">
