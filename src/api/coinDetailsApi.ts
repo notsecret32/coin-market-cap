@@ -57,10 +57,10 @@ const transformCoinGraphData = (
     symbol: response.data.symbol,
     graph: response.data.quotes.map((graph: any) => ({
       time: {
-        open: new Date(graph.time_open),
-        close: new Date(graph.time_close),
-        high: new Date(graph.time_high),
-        low: new Date(graph.time_low),
+        open: graph.time_open.toISOString(),
+        close: graph.time_close.toISOString(),
+        high: graph.time_high.toISOString(),
+        low: graph.time_low.toISOString(),
       },
       price: {
         open: graph.quote.USD.open,
@@ -69,7 +69,7 @@ const transformCoinGraphData = (
         low: graph.quote.USD.low,
         volume: graph.quote.USD.volume,
         capitalization: graph.quote.USD.capitalization,
-        timestamp: new Date(graph.quote.USD.timestamp),
+        timestamp: graph.quote.USD.timestamp.toISOString(),
       },
     })),
   }
