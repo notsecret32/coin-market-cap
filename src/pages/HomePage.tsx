@@ -1,6 +1,5 @@
-import { useGetCoinsListQuery } from 'src/api/coinsListApi'
 import { Button, CoinsTable, Search } from 'src/components'
-import { SortingTableEnum } from 'src/enums'
+import { useCoinData } from 'src/hooks'
 import {
   nextPage,
   previousPage,
@@ -9,17 +8,13 @@ import {
 import { useAppDispatch, useAppSelector } from 'src/redux/store'
 
 export const HomePage = () => {
-  const { start, limits, isStartReached, isEndReached } = useAppSelector(
+  const { isStartReached, isEndReached, limits } = useAppSelector(
     (state) => state.homePageSlice,
-  )
-  const { columnId, sortingType } = useAppSelector(
-    (state) => state.sortingTableSlice,
   )
   const dispatch = useAppDispatch()
 
-  const { data, error, isLoading, isError } = useGetCoinsListQuery({
-    start,
-  })
+  const { data, sortedAndFilteredData, error, isLoading, isError } =
+    useCoinData()
 
   if (isError) {
     console.log(error)
@@ -43,29 +38,6 @@ export const HomePage = () => {
     dispatch(previousPage())
   }
 
-  const sortedData = data?.data?.slice().sort((a, b) => {
-    switch (columnId) {
-      case 1:
-        return sortingType === SortingTableEnum.Ascending
-          ? a.id - b.id
-          : b.id - a.id
-      case 3:
-        return sortingType === SortingTableEnum.Ascending
-          ? a.price - b.price
-          : b.price - a.price
-      case 4:
-        return sortingType === SortingTableEnum.Ascending
-          ? a.capitalization - b.capitalization
-          : b.capitalization - a.capitalization
-      case 5:
-        return sortingType === SortingTableEnum.Ascending
-          ? a.percentChange24h - b.percentChange24h
-          : b.percentChange24h - a.percentChange24h
-      default:
-        return 0
-    }
-  })
-
   return (
     <main>
       <div className="container mx-auto">
@@ -78,7 +50,7 @@ export const HomePage = () => {
             <div className="my-3">
               <Search />
             </div>
-            <CoinsTable coins={sortedData} />
+            <CoinsTable coins={sortedAndFilteredData} />
             <div className="flex flex-row justify-center items-center gap-4 my-4">
               <Button
                 className={isStartReached ? 'hidden' : 'block'}
