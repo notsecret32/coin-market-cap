@@ -1,4 +1,4 @@
-import { formatNumber } from 'src/utils'
+import { formatShortNumber } from 'src/utils'
 
 interface ICoinCapitalizationProps {
   capitalization: number
@@ -9,7 +9,7 @@ export const CoinCapitalization = ({
 }: ICoinCapitalizationProps) => {
   return (
     <td className="text-left sm:text-right py-3">
-      ${formatNumber(capitalization)}
+      ${formatShortNumber(capitalization)}
     </td>
   )
 }
