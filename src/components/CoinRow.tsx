@@ -6,7 +6,7 @@ import {
   CoinNumber,
   CoinPercentChange,
   CoinPrice,
-} from 'src/components/CoinsTable'
+} from 'src/components'
 
 interface ICoinRowProps {
   id: number
