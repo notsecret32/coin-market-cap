@@ -1,36 +1,34 @@
-import { useGetCoinsListQuery } from 'src/api/coinsListApi'
+import { useGetCryptoCurrenciesListQuery } from 'src/api/crypto-currencies-list-api'
 import { SortingTableEnum } from 'src/enums'
 import { useAppSelector } from 'src/redux/store'
 
-export const useCoinData = () => {
+export const useCryptoCurrenciesList = () => {
   const { start } = useAppSelector((state) => state.homePageSlice)
   const { columnId, sortingType } = useAppSelector(
     (state) => state.sortingTableSlice,
   )
   const { coinName } = useAppSelector((state) => state.searchCoinSlice)
 
-  const { data, error, isLoading, isError } = useGetCoinsListQuery({ start })
+  const { data, error, isLoading, isError } = useGetCryptoCurrenciesListQuery({
+    start,
+  })
 
-  const sortedAndFilteredData = data?.data
+  const sortedAndFilteredData = data
     ?.filter((coin) => coin.name.toLowerCase().includes(coinName.toLowerCase()))
     .sort((a, b) => {
       switch (columnId) {
-        case 1:
-          return sortingType === SortingTableEnum.Ascending
-            ? a.id - b.id
-            : b.id - a.id
-        case 3:
+        case 2:
           return sortingType === SortingTableEnum.Ascending
             ? a.price - b.price
             : b.price - a.price
-        case 4:
+        case 3:
           return sortingType === SortingTableEnum.Ascending
             ? a.capitalization - b.capitalization
             : b.capitalization - a.capitalization
-        case 5:
+        case 4:
           return sortingType === SortingTableEnum.Ascending
-            ? a.percentChange24h - b.percentChange24h
-            : b.percentChange24h - a.percentChange24h
+            ? a.changePercent24Hr - b.changePercent24Hr
+            : b.changePercent24Hr - a.changePercent24Hr
         default:
           return 0
       }

@@ -1,7 +1,11 @@
-import type { IApiCoin } from './api-coin'
-import type { IApiCoinInfo } from './api-coin-info'
-import type { IApiCoinMarketInfo } from './api-coin-market-info'
-import type { IApiResponse } from './api-response'
-import type { IApiStatus } from './api-status'
+import type { ICryptoCurrency } from './crypto-currency'
+import type { ICryptoCurrencyChart } from './crypto-currency-chart'
+import type { ICryptoCurrencyChartPoint } from './crypto-currency-chart-point'
+import type { ICryptoCurrencyDetails } from './crypto-currency-details'
 
-export { IApiCoin, IApiCoinInfo, IApiCoinMarketInfo, IApiResponse, IApiStatus }
+export {
+  ICryptoCurrency,
+  ICryptoCurrencyChart,
+  ICryptoCurrencyChartPoint,
+  ICryptoCurrencyDetails,
+}

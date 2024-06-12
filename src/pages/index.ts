@@ -1,4 +1,4 @@
-import { CoinDetailsPage } from './CoinDetailsPage'
-import { HomePage } from './HomePage'
+import { CryptoCurrenciesListPage } from './CryptoCurrenciesListPage'
+import { CryptoCurrencyDetailsPage } from './CryptoCurrencyDetailsPage'
 
-export { CoinDetailsPage, HomePage }
+export { CryptoCurrenciesListPage, CryptoCurrencyDetailsPage }

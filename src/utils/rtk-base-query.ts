@@ -1,12 +1,11 @@
 import { fetchBaseQuery } from '@reduxjs/toolkit/query'
 
-export const trkBaseQuery = () =>
+export const rtkBaseQuery = () =>
   fetchBaseQuery({
-    baseUrl:
-      'https://cors-anywhere.herokuapp.com/https://pro-api.coinmarketcap.com',
-    prepareHeaders: (headers) => {
-      headers.set('Accept', 'application/json')
-      headers.set('X-CMC_PRO_API_KEY', process.env.REACT_APP_CMC_API_KEY!)
-      return headers
+    baseUrl: 'https://api.coincap.io',
+    headers: {
+      'Accept-Encoding': 'gzip',
+      'Content-Type': 'application/json; charset=utf-8',
+      Authorization: `Bearer ${process.env.REACT_APP_COIN_CAP_API_KEY}`,
     },
   })

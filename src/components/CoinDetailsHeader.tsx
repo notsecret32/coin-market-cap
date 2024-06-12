@@ -5,9 +5,10 @@ import { Button } from 'src/components/Button'
 import { CoinBudge } from 'src/components/CoinBadge'
 
 interface ICoinDetailsHeaderProps {
-  id?: number
+  id?: string
   name?: string
   symbol?: string
+  imageUrl?: string
 }
 
 export const CoinDetailsHeader = (coin: ICoinDetailsHeaderProps) => {
