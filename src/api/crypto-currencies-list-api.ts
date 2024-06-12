@@ -32,8 +32,11 @@ export const cryptoCurrenciesListApi = createApi({
   reducerPath: 'cryptoCurrenciesListApi',
   baseQuery: rtkBaseQuery(),
   endpoints: (builder) => ({
-    getCryptoCurrenciesList: builder.query<ICryptoCurrency[], void>({
-      query: () => '/v2/assets',
+    getCryptoCurrenciesList: builder.query<
+      ICryptoCurrency[],
+      { start: number }
+    >({
+      query: ({ start }) => `/v2/assets?offset=${start}`,
       transformResponse,
     }),
   }),
