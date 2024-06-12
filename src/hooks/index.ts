@@ -1,4 +1,4 @@
-import { useCoinData } from './useCoinData'
-import { useCoinDetails } from './useCoinDetails'
+import { useCryptoCurrenciesList } from './use-crypto-currencies-list'
+import { useCryptoCurrencyDetails } from './use-crypto-currency-details'
 
-export { useCoinData, useCoinDetails }
+export { useCryptoCurrenciesList, useCryptoCurrencyDetails }
