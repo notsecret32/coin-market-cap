@@ -1,5 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom'
-import { CoinDetailsPage, HomePage } from 'src/pages'
+import { CryptoCurrencyDetailsPage, HomePage } from 'src/pages'
 
 export const router = createBrowserRouter([
   {
@@ -8,6 +8,6 @@ export const router = createBrowserRouter([
   },
   {
     path: '/currencies/:id',
-    element: <CoinDetailsPage />,
+    element: <CryptoCurrencyDetailsPage />,
   },
 ])

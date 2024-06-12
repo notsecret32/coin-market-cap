@@ -10,7 +10,7 @@ import { TimeIntervalEnum } from 'src/enums'
 import { useCryptoCurrencyDetails } from 'src/hooks'
 import { formatNumberWithCommas } from 'src/utils'
 
-export const CoinDetailsPage = () => {
+export const CryptoCurrencyDetailsPage = () => {
   const { id } = useParams()
 
   const { data, error, isLoading } = useCryptoCurrencyDetails({
