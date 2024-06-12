@@ -6,6 +6,7 @@ import {
   Error,
   Loading,
 } from 'src/components'
+import { CryptoCurrencyChartIntervals } from 'src/components/CryptoCurrencyChartIntervals'
 import { useCryptoCurrencyDetails } from 'src/hooks'
 import { useAppSelector } from 'src/redux/store'
 import { formatNumberWithCommas } from 'src/utils'
@@ -49,6 +50,9 @@ export const CryptoCurrencyDetailsPage = () => {
                 ${data.price?.toFixed(2)}
               </h1>
             </div>
+
+            {/* Intervals */}
+            <CryptoCurrencyChartIntervals />
 
             {/* Chart */}
             <CryptoCurrencyChart points={data.points} />

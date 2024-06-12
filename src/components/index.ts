@@ -13,10 +13,10 @@ import { CoinRow } from './CoinRow'
 import { CoinStatisticItem } from './CoinStatisticItem'
 import { CoinTable } from './CoinTable'
 import { CryptoCurrencyChart } from './CryptoCurrencyChart'
+import { CryptoCurrencyChartInterval } from './CryptoCurrencyChartInterval'
 import { Error } from './Error'
 import { Loading } from './Loading'
 import { Search } from './Search'
-
 export {
   Button,
   CoinBudge,
@@ -33,6 +33,7 @@ export {
   CoinStatisticItem,
   CoinTable,
   CryptoCurrencyChart,
+  CryptoCurrencyChartInterval,
   Error,
   Loading,
   Search,

@@ -21,3 +21,5 @@ export const timeIntervalSlice = createSlice({
     },
   },
 })
+
+export const { updateInterval } = timeIntervalSlice.actions
