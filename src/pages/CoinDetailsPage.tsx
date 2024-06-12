@@ -1,18 +1,21 @@
 import { useParams } from 'react-router-dom'
-import { useGetCryptoCurrencyDetailsQuery } from 'src/api/crypto-currency-details-api'
 import {
   CoinDetailsHeader,
   CoinStatisticItem,
+  CryptoCurrencyChart,
   Error,
   Loading,
 } from 'src/components'
+import { TimeIntervalEnum } from 'src/enums'
+import { useCryptoCurrencyDetails } from 'src/hooks'
 import { formatNumberWithCommas } from 'src/utils'
 
 export const CoinDetailsPage = () => {
   const { id } = useParams()
 
-  const { data, error, isLoading } = useGetCryptoCurrencyDetailsQuery({
+  const { data, error, isLoading } = useCryptoCurrencyDetails({
     id: id ?? 'bitcoin',
+    interval: TimeIntervalEnum.d1,
   })
 
   return (
@@ -34,6 +37,9 @@ export const CoinDetailsPage = () => {
               <h1 className="font-inter font-semibold text-4xl">
                 ${data.price?.toFixed(2)}
               </h1>
+            </div>
+            <div>
+              <CryptoCurrencyChart points={data.points} />
             </div>
             <div className="flex flex-col mt-auto mb-16 gap-y-4">
               <h2 className="font-inter font-semibold text-sm">Статистика</h2>
