@@ -1,8 +1,8 @@
 import { CoinHeader, CoinRow } from 'src/components'
-import { IApiCoin } from 'src/types'
+import { ICryptoCurrency } from 'src/types'
 
 interface ICoinsTableProps {
-  coins?: IApiCoin[]
+  coins?: ICryptoCurrency[]
 }
 
 export const CoinTable = ({ coins }: ICoinsTableProps) => {

@@ -1,5 +1,5 @@
 import { Button, CoinTable, Error, Loading, Search } from 'src/components'
-import { useCoinData } from 'src/hooks'
+import { useCryptoCurrenciesList } from 'src/hooks'
 import {
   nextPage,
   previousPage,
@@ -7,23 +7,24 @@ import {
 } from 'src/redux/slices/homePageSlice'
 import { useAppDispatch, useAppSelector } from 'src/redux/store'
 
-export const HomePage = () => {
+export const CryptoCurrenciesListPage = () => {
   const { isStartReached, isEndReached, limits } = useAppSelector(
     (state) => state.homePageSlice,
   )
   const dispatch = useAppDispatch()
 
-  const { data, sortedAndFilteredData, error, isLoading } = useCoinData()
+  const { data, sortedAndFilteredData, error, isLoading } =
+    useCryptoCurrenciesList()
 
   const handleNextPage = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
     dispatch(nextPage())
 
-    if (data?.data === undefined) {
+    if (data === undefined) {
       return
     }
 
-    data?.data.length < limits
+    data.length < limits
       ? dispatch(setEndReached({ isEndReacher: true }))
       : dispatch(setEndReached({ isEndReacher: false }))
   }

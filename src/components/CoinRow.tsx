@@ -3,52 +3,46 @@ import {
   CoinCapitalization,
   CoinLikeButton,
   CoinName,
-  CoinNumber,
   CoinPercentChange,
   CoinPrice,
 } from 'src/components'
 
 interface ICoinRowProps {
-  id: number
+  id: string
+  imageUrl: string
   name: string
   symbol: string
-  slug: string
   price: number
   capitalization: number
-  percentChange24h: number
+  changePercent24Hr: number
 }
 
 export const CoinRow = ({
   id,
   name,
-  percentChange24h,
+  imageUrl,
+  changePercent24Hr,
   price,
   capitalization,
   symbol,
-  slug,
 }: ICoinRowProps) => {
   const navigate = useNavigate()
 
-  const navigateToPage = (slug: string) => {
-    navigate(`/currencies/${slug}/`, {
-      state: {
-        id,
-      },
-    })
+  const navigateToPage = (id: string) => {
+    navigate(`/currencies/${id}/`)
   }
 
   return (
     <tr
       key={id}
       className="border-b border-[#f0f1f6] hover:bg-[#c5c5ca] cursor-pointer"
-      onClick={() => navigateToPage(slug)}
+      onClick={() => navigateToPage(id)}
     >
       <CoinLikeButton />
-      <CoinNumber number={id} />
-      <CoinName id={id} name={name} symbol={symbol} />
+      <CoinName id={id} name={name} symbol={symbol} imageUrl={imageUrl} />
       <CoinPrice price={price} />
       <CoinCapitalization capitalization={capitalization} />
-      <CoinPercentChange percent={percentChange24h} />
+      <CoinPercentChange percent={changePercent24Hr} />
     </tr>
   )
 }
