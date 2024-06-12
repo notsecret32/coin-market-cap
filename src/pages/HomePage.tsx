@@ -1,5 +1,5 @@
+import { useGetCryptoCurrenciesListQuery } from 'src/api/crypto-currencies-list-api'
 import { Button, CoinTable, Error, Loading, Search } from 'src/components'
-import { useCoinData } from 'src/hooks'
 import {
   nextPage,
   previousPage,
@@ -13,17 +13,17 @@ export const HomePage = () => {
   )
   const dispatch = useAppDispatch()
 
-  const { data, sortedAndFilteredData, error, isLoading } = useCoinData()
+  const { data, error, isLoading } = useGetCryptoCurrenciesListQuery()
 
   const handleNextPage = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
     dispatch(nextPage())
 
-    if (data?.data === undefined) {
+    if (data === undefined) {
       return
     }
 
-    data?.data.length < limits
+    data.length < limits
       ? dispatch(setEndReached({ isEndReacher: true }))
       : dispatch(setEndReached({ isEndReacher: false }))
   }
@@ -45,7 +45,7 @@ export const HomePage = () => {
             <div className="my-3">
               <Search />
             </div>
-            <CoinTable coins={sortedAndFilteredData} />
+            <CoinTable coins={data} />
             <div className="flex flex-row justify-center items-center gap-4 my-4">
               <Button
                 className={isStartReached ? 'hidden' : 'block'}

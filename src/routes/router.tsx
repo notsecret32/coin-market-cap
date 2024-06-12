@@ -7,7 +7,7 @@ export const router = createBrowserRouter([
     element: <HomePage />,
   },
   {
-    path: '/currencies/:slug',
+    path: '/currencies/:id',
     element: <CoinDetailsPage />,
   },
 ])

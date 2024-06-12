@@ -1,3 +1,4 @@
-import { coinsListApi } from './coinsListApi'
+import { cryptoCurrenciesListApi } from './crypto-currencies-list-api'
+import { cryptoCurrencyDetailsApi } from './crypto-currency-details-api'
 
-export { coinsListApi }
+export { cryptoCurrenciesListApi, cryptoCurrencyDetailsApi }
