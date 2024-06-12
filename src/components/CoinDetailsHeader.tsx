@@ -2,7 +2,7 @@ import { IoMdArrowRoundBack } from 'react-icons/io'
 import { LuStar } from 'react-icons/lu'
 import { useNavigate } from 'react-router-dom'
 import { Button } from 'src/components/Button'
-import { CoinFullName } from './CoinFullName'
+import { CoinBudge } from 'src/components/CoinBadge'
 
 interface ICoinDetailsHeaderProps {
   id?: number
@@ -18,7 +18,7 @@ export const CoinDetailsHeader = (coin: ICoinDetailsHeaderProps) => {
       <Button onClick={() => navigate(-1)}>
         <IoMdArrowRoundBack size={24} />
       </Button>
-      <CoinFullName {...coin} />
+      <CoinBudge {...coin} />
       <Button>
         <LuStar size={24} />
       </Button>

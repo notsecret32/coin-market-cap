@@ -1,10 +1,10 @@
-interface ICoinFullNameProps {
+interface ICoinBudgeProps {
   id?: number
   name?: string
   symbol?: string
 }
 
-export const CoinFullName = ({ id, name, symbol }: ICoinFullNameProps) => {
+export const CoinBudge = ({ id, name, symbol }: ICoinBudgeProps) => {
   return (
     <div className="text-left py-3 flex flex-row items-center gap-2">
       <img
