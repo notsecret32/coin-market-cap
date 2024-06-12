@@ -11,7 +11,7 @@ export const CoinDetailsPage = () => {
 
   return (
     <main>
-      <div className="container mx-auto flex flex-col h-screen">
+      <div className="flex flex-col h-screen sm:w-2/3 xl:w-1/2 mx-4 sm:mx-auto">
         {isLoading ? (
           <Loading />
         ) : error ? (
