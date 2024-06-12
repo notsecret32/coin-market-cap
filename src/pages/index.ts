@@ -1,3 +1,4 @@
+import { CoinDetailsPage } from './CoinDetailsPage'
 import { HomePage } from './HomePage'
 
-export { HomePage }
+export { CoinDetailsPage, HomePage }
