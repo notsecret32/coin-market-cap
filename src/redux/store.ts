@@ -2,7 +2,12 @@ import { configureStore } from '@reduxjs/toolkit'
 import { setupListeners } from '@reduxjs/toolkit/query'
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
 import { cryptoCurrenciesListApi, cryptoCurrencyDetailsApi } from 'src/api'
-import { homePageSlice, searchCoinSlice, sortingTableSlice } from './slices'
+import {
+  homePageSlice,
+  searchCoinSlice,
+  sortingTableSlice,
+  timeIntervalSlice,
+} from './slices'
 
 export const store = configureStore({
   reducer: {
@@ -12,6 +17,7 @@ export const store = configureStore({
     sortingTableSlice: sortingTableSlice.reducer,
     homePageSlice: homePageSlice.reducer,
     searchCoinSlice: searchCoinSlice.reducer,
+    timeIntervalSlice: timeIntervalSlice.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()

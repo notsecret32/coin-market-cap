@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import {
   CoinDetailsHeader,
   CoinStatisticItem,
@@ -6,16 +6,24 @@ import {
   Error,
   Loading,
 } from 'src/components'
-import { TimeIntervalEnum } from 'src/enums'
 import { useCryptoCurrencyDetails } from 'src/hooks'
+import { useAppSelector } from 'src/redux/store'
 import { formatNumberWithCommas } from 'src/utils'
 
 export const CryptoCurrencyDetailsPage = () => {
   const { id } = useParams()
 
+  const navigate = useNavigate()
+
+  if (!id || id === undefined) {
+    navigate(-1)
+  }
+
+  const { interval } = useAppSelector((state) => state.timeIntervalSlice)
+
   const { data, error, isLoading } = useCryptoCurrencyDetails({
-    id: id ?? 'bitcoin',
-    interval: TimeIntervalEnum.m30,
+    id: id!,
+    interval: interval,
   })
 
   return (
