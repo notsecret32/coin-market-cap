@@ -1,4 +1,4 @@
-import { CoinHeaderColumn } from './components/CoinHeaderColumn'
+import { CoinHeaderColumn } from 'src/components'
 
 interface ICoinHeaderData {
   id: number

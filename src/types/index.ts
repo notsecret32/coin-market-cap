@@ -1,6 +1,7 @@
 import type { IApiCoin } from './api-coin'
-import type { IApiError } from './api-error'
+import type { IApiCoinInfo } from './api-coin-info'
+import type { IApiCoinMarketInfo } from './api-coin-market-info'
+import type { IApiResponse } from './api-response'
+import type { IApiStatus } from './api-status'
 
-import type { IApiTrendingCoins } from './api-trending-coins'
-
-export { IApiCoin, IApiError, IApiTrendingCoins }
+export { IApiCoin, IApiCoinInfo, IApiCoinMarketInfo, IApiResponse, IApiStatus }
