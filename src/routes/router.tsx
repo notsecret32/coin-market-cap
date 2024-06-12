@@ -1,10 +1,10 @@
 import { createBrowserRouter } from 'react-router-dom'
-import { CryptoCurrencyDetailsPage, HomePage } from 'src/pages'
+import { CryptoCurrenciesListPage, CryptoCurrencyDetailsPage } from 'src/pages'
 
 export const router = createBrowserRouter([
   {
     path: '/',
-    element: <HomePage />,
+    element: <CryptoCurrenciesListPage />,
   },
   {
     path: '/currencies/:id',

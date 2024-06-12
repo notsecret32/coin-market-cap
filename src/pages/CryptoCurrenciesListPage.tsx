@@ -7,7 +7,7 @@ import {
 } from 'src/redux/slices/homePageSlice'
 import { useAppDispatch, useAppSelector } from 'src/redux/store'
 
-export const HomePage = () => {
+export const CryptoCurrenciesListPage = () => {
   const { isStartReached, isEndReached, limits } = useAppSelector(
     (state) => state.homePageSlice,
   )
