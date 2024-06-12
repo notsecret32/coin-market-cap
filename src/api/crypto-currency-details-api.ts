@@ -47,7 +47,8 @@ const transformCryptoCurrencyChartResponse = (
 ): ICryptoCurrencyChart => ({
   data: response.data.map((point) => ({
     price: parseFloat(point.priceUsd),
-    time: point.time,
+    date: new Date(point.time).toLocaleDateString(),
+    time: new Date(point.time).toLocaleTimeString(),
   })),
 })
 
