@@ -1,6 +1,6 @@
-import { formatNumber } from './format-number'
+import { formatShortNumber } from './format-short-number'
 import { getApiStatusResponse } from './get-api-status-response'
 import { handleApiError } from './handle-api-error'
 import { trkBaseQuery } from './rtk-base-query'
 
-export { formatNumber, getApiStatusResponse, handleApiError, trkBaseQuery }
+export { formatShortNumber, getApiStatusResponse, handleApiError, trkBaseQuery }

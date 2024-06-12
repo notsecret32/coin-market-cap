@@ -1,4 +1,4 @@
-import { formatNumber } from 'src/utils'
+import { formatShortNumber } from 'src/utils'
 
 interface ICoinPriceProps {
   price: number
@@ -6,6 +6,8 @@ interface ICoinPriceProps {
 
 export const CoinPrice = ({ price }: ICoinPriceProps) => {
   return (
-    <td className="text-left sm:text-right py-3">${formatNumber(price)}</td>
+    <td className="text-left sm:text-right py-3">
+      ${formatShortNumber(price)}
+    </td>
   )
 }
