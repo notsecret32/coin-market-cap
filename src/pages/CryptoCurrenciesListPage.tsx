@@ -1,4 +1,4 @@
-import { Button, Layout, Search, Table } from 'src/components'
+import { Button, Layout, Modal, Search, Table } from 'src/components'
 import { useCryptoCurrenciesList, useSortTableColumn } from 'src/hooks'
 import {
   nextPage,
@@ -8,13 +8,15 @@ import {
 import { useAppDispatch, useAppSelector } from 'src/redux/store'
 
 export const CryptoCurrenciesListPage = () => {
+  // Pagination
+  const dispatch = useAppDispatch()
   const { isStartReached, isEndReached, limits } = useAppSelector(
     (state) => state.homePageSlice,
   )
-  const dispatch = useAppDispatch()
 
-  const { data, error, isLoading } = useCryptoCurrenciesList()
+  // Crypto Currency List
   const { data: finalData } = useSortTableColumn()
+  const { data, error, isLoading } = useCryptoCurrenciesList()
 
   const handleNextPage = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
@@ -54,6 +56,9 @@ export const CryptoCurrenciesListPage = () => {
           След. страница
         </Button>
       </div>
+      <Modal title="Купить криптовалюту" isOpen={false}>
+        <p>Покупаю</p>
+      </Modal>
     </Layout>
   )
 }
