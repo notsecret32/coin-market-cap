@@ -1,5 +1,4 @@
 import { Button } from './Button'
-import { BuyCryptoCurrencyModal } from './BuyCryptoCurrencyModal'
 import { CoinBudge } from './CoinBadge'
 import { CoinDetailsHeader } from './CoinDetailsHeader'
 import { CoinStatisticItem } from './CoinStatisticItem'
@@ -7,6 +6,7 @@ import { CryptoCurrencyChart } from './CryptoCurrencyChart'
 import { CryptoCurrencyChartInterval } from './CryptoCurrencyChartInterval'
 import { InfoBlock } from './InfoBlock'
 import { Layout } from './Layout'
+import { Modal } from './Modal'
 import { PopularCryptoCurrency } from './PopularCryptoCurrency'
 import { Search } from './Search'
 import { Table } from './Table'
@@ -16,7 +16,6 @@ import { TableRow } from './TableRow'
 
 export {
   Button,
-  BuyCryptoCurrencyModal,
   CoinBudge,
   CoinDetailsHeader,
   CoinStatisticItem,
@@ -24,6 +23,7 @@ export {
   CryptoCurrencyChartInterval,
   InfoBlock,
   Layout,
+  Modal,
   PopularCryptoCurrency,
   Search,
   Table,
