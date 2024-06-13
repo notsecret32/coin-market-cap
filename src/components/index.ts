@@ -16,6 +16,7 @@ import { CryptoCurrencyChart } from './CryptoCurrencyChart'
 import { CryptoCurrencyChartInterval } from './CryptoCurrencyChartInterval'
 import { InfoBlock } from './InfoBlock'
 import { Layout } from './Layout'
+import { PopularCryptoCurrency } from './PopularCryptoCurrency'
 import { Search } from './Search'
 
 export {
@@ -37,5 +38,6 @@ export {
   CryptoCurrencyChartInterval,
   InfoBlock,
   Layout,
+  PopularCryptoCurrency,
   Search,
 }
