@@ -14,9 +14,10 @@ import { CoinStatisticItem } from './CoinStatisticItem'
 import { CoinTable } from './CoinTable'
 import { CryptoCurrencyChart } from './CryptoCurrencyChart'
 import { CryptoCurrencyChartInterval } from './CryptoCurrencyChartInterval'
-import { Error } from './Error'
-import { Loading } from './Loading'
+import { InfoBlock } from './InfoBlock'
+import { Layout } from './Layout'
 import { Search } from './Search'
+
 export {
   Button,
   CoinBudge,
@@ -34,7 +35,7 @@ export {
   CoinTable,
   CryptoCurrencyChart,
   CryptoCurrencyChartInterval,
-  Error,
-  Loading,
+  InfoBlock,
+  Layout,
   Search,
 }
