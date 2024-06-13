@@ -1,4 +1,4 @@
-import { Button, CoinTable, Error, Loading, Search } from 'src/components'
+import { Button, CoinTable, Layout, Search } from 'src/components'
 import { useCryptoCurrenciesList } from 'src/hooks'
 import {
   nextPage,
@@ -35,35 +35,25 @@ export const CryptoCurrenciesListPage = () => {
   }
 
   return (
-    <main>
-      <div className="container mx-auto flex flex-col h-screen">
-        {isLoading ? (
-          <Loading />
-        ) : error ? (
-          <Error error={error} />
-        ) : (
-          <>
-            <div className="my-3">
-              <Search />
-            </div>
-            <CoinTable coins={sortedAndFilteredData} />
-            <div className="flex flex-row justify-center items-center gap-4 my-4">
-              <Button
-                className={isStartReached ? 'hidden' : 'block'}
-                onClick={(e) => handlePreviousPage(e)}
-              >
-                Пред. страница
-              </Button>
-              <Button
-                className={isEndReached ? 'hidden' : 'block'}
-                onClick={(e) => handleNextPage(e)}
-              >
-                След. страница
-              </Button>
-            </div>
-          </>
-        )}
+    <Layout error={error} isLoading={isLoading}>
+      <div className="my-3">
+        <Search />
       </div>
-    </main>
+      <CoinTable coins={sortedAndFilteredData} />
+      <div className="flex flex-row justify-center items-center gap-4 my-4">
+        <Button
+          className={isStartReached ? 'hidden' : 'block'}
+          onClick={(e) => handlePreviousPage(e)}
+        >
+          Пред. страница
+        </Button>
+        <Button
+          className={isEndReached ? 'hidden' : 'block'}
+          onClick={(e) => handleNextPage(e)}
+        >
+          След. страница
+        </Button>
+      </div>
+    </Layout>
   )
 }
