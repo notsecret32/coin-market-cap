@@ -1,5 +1,5 @@
-import { Button, CoinTable, Layout, Search } from 'src/components'
-import { useCryptoCurrenciesList } from 'src/hooks'
+import { Button, Layout, Search, Table } from 'src/components'
+import { useCryptoCurrenciesList, useSortTableColumn } from 'src/hooks'
 import {
   nextPage,
   previousPage,
@@ -13,8 +13,8 @@ export const CryptoCurrenciesListPage = () => {
   )
   const dispatch = useAppDispatch()
 
-  const { data, sortedAndFilteredData, error, isLoading } =
-    useCryptoCurrenciesList()
+  const { data, error, isLoading } = useCryptoCurrenciesList()
+  const { data: finalData } = useSortTableColumn()
 
   const handleNextPage = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
@@ -39,7 +39,7 @@ export const CryptoCurrenciesListPage = () => {
       <div className="my-3">
         <Search />
       </div>
-      <CoinTable coins={sortedAndFilteredData} />
+      <Table cryptoCurrencies={finalData} />
       <div className="flex flex-row justify-center items-center gap-4 my-4">
         <Button
           className={isStartReached ? 'hidden' : 'block'}
