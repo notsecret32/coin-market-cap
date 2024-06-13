@@ -21,7 +21,7 @@ export const Layout = ({ children, error, isLoading }: ILayoutProps) => {
 
   return (
     <>
-      <div className="w-screen border-b">
+      <div className="border-b">
         <div className="container mx-auto py-3">
           <NavBar />
         </div>
