@@ -1,4 +1,5 @@
 import { Button } from './Button'
+import { BuyCryptoCurrencyModal } from './BuyCryptoCurrencyModal'
 import { CoinBudge } from './CoinBadge'
 import { CoinDetailsHeader } from './CoinDetailsHeader'
 import { CoinStatisticItem } from './CoinStatisticItem'
@@ -16,6 +17,7 @@ import { TableRow } from './TableRow'
 
 export {
   Button,
+  BuyCryptoCurrencyModal,
   CoinBudge,
   CoinDetailsHeader,
   CoinStatisticItem,
