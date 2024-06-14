@@ -1,2 +1,2 @@
-export const getImageUrl = (symbol: string) =>
-  `https://assets.coincap.io/assets/icons/${symbol.toLowerCase()}@2x.png`
+export const getImageUrl = (symbol: string | undefined) =>
+  `https://assets.coincap.io/assets/icons/${symbol ? symbol.toLowerCase() : 'btc'}@2x.png`

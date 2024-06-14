@@ -8,7 +8,7 @@ import {
 import { CryptoCurrencyChartIntervals } from 'src/components/CryptoCurrencyChartIntervals'
 import { useCryptoCurrencyDetails } from 'src/hooks'
 import { useAppSelector } from 'src/redux/store'
-import { formatNumberWithCommas } from 'src/utils'
+import { formatNumberWithCommas, getImageUrl } from 'src/utils'
 
 export const CryptoCurrencyDetailsPage = () => {
   const { id } = useParams()
@@ -33,7 +33,7 @@ export const CryptoCurrencyDetailsPage = () => {
         id={data.id}
         name={data.name}
         symbol={data.symbol}
-        imageUrl={data.imageUrl}
+        imageUrl={getImageUrl(data.symbol)}
       />
 
       {/* Price */}
