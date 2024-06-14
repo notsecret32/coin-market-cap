@@ -3,6 +3,7 @@ import { setupListeners } from '@reduxjs/toolkit/query'
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
 import { cryptoCurrenciesListApi, cryptoCurrencyDetailsApi } from 'src/api'
 import {
+  briefcaseSlice,
   homePageSlice,
   searchCoinSlice,
   sortingTableSlice,
@@ -18,6 +19,7 @@ export const store = configureStore({
     homePageSlice: homePageSlice.reducer,
     searchCoinSlice: searchCoinSlice.reducer,
     timeIntervalSlice: timeIntervalSlice.reducer,
+    briefcaseSlice: briefcaseSlice.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()

@@ -3,7 +3,7 @@ import { FetchBaseQueryError } from '@reduxjs/toolkit/query'
 
 interface IHandleApiErrorReturn {
   isError: boolean
-  message?: string
+  message: string
 }
 
 export const handleApiError = (
@@ -12,6 +12,7 @@ export const handleApiError = (
   if (error === undefined) {
     return {
       isError: false,
+      message: '',
     }
   }
 
