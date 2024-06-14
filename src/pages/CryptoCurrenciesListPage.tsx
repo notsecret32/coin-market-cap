@@ -1,4 +1,4 @@
-import { Button, Layout, Modal, Search, Table } from 'src/components'
+import { Button, Layout, Search, Table } from 'src/components'
 import { useCryptoCurrenciesList, useSortTableColumn } from 'src/hooks'
 import {
   nextPage,
@@ -56,9 +56,6 @@ export const CryptoCurrenciesListPage = () => {
           След. страница
         </Button>
       </div>
-      <Modal title="Купить криптовалюту" isOpen={false}>
-        <p>Покупаю</p>
-      </Modal>
     </Layout>
   )
 }
