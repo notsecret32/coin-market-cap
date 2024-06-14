@@ -1,15 +1,14 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { SortingTableEnum } from 'src/enums'
+import { SortableTableColumn, SortDirection } from 'src/types'
 
 export interface ISortingTableSlice {
-  sortingType: SortingTableEnum
-  columnId: number
-  columnName?: string
+  direction: SortDirection
+  column: SortableTableColumn
 }
 
 const initialState: ISortingTableSlice = {
-  sortingType: SortingTableEnum.Ascending,
-  columnId: 0,
+  direction: 'desc',
+  column: 'capitalization',
 }
 
 export const sortingTableSlice = createSlice({

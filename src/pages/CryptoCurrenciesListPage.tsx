@@ -1,5 +1,5 @@
-import { Button, CoinTable, Error, Loading, Search } from 'src/components'
-import { useCryptoCurrenciesList } from 'src/hooks'
+import { Button, Layout, Search, Table } from 'src/components'
+import { useCryptoCurrenciesList, useSortTableColumn } from 'src/hooks'
 import {
   nextPage,
   previousPage,
@@ -8,13 +8,15 @@ import {
 import { useAppDispatch, useAppSelector } from 'src/redux/store'
 
 export const CryptoCurrenciesListPage = () => {
+  // Pagination
+  const dispatch = useAppDispatch()
   const { isStartReached, isEndReached, limits } = useAppSelector(
     (state) => state.homePageSlice,
   )
-  const dispatch = useAppDispatch()
 
-  const { data, sortedAndFilteredData, error, isLoading } =
-    useCryptoCurrenciesList()
+  // Crypto Currency List
+  const { data: finalData } = useSortTableColumn()
+  const { data, error, isLoading } = useCryptoCurrenciesList()
 
   const handleNextPage = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
@@ -35,35 +37,25 @@ export const CryptoCurrenciesListPage = () => {
   }
 
   return (
-    <main>
-      <div className="container mx-auto flex flex-col h-screen">
-        {isLoading ? (
-          <Loading />
-        ) : error ? (
-          <Error error={error} />
-        ) : (
-          <>
-            <div className="my-3">
-              <Search />
-            </div>
-            <CoinTable coins={sortedAndFilteredData} />
-            <div className="flex flex-row justify-center items-center gap-4 my-4">
-              <Button
-                className={isStartReached ? 'hidden' : 'block'}
-                onClick={(e) => handlePreviousPage(e)}
-              >
-                Пред. страница
-              </Button>
-              <Button
-                className={isEndReached ? 'hidden' : 'block'}
-                onClick={(e) => handleNextPage(e)}
-              >
-                След. страница
-              </Button>
-            </div>
-          </>
-        )}
+    <Layout error={error} isLoading={isLoading}>
+      <div className="my-3">
+        <Search />
       </div>
-    </main>
+      <Table cryptoCurrencies={finalData} />
+      <div className="flex flex-row justify-center items-center gap-4 my-4">
+        <Button
+          className={isStartReached ? 'hidden' : 'block'}
+          onClick={(e) => handlePreviousPage(e)}
+        >
+          Пред. страница
+        </Button>
+        <Button
+          className={isEndReached ? 'hidden' : 'block'}
+          onClick={(e) => handleNextPage(e)}
+        >
+          След. страница
+        </Button>
+      </div>
+    </Layout>
   )
 }
