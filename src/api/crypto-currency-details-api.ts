@@ -1,7 +1,7 @@
 import { createApi } from '@reduxjs/toolkit/query/react'
 import { TimeIntervalEnum } from 'src/enums'
 import { ICryptoCurrencyChart, ICryptoCurrencyDetails } from 'src/types'
-import { getImageUrl, rtkBaseQuery } from 'src/utils'
+import { rtkBaseQuery } from 'src/utils'
 
 interface ICryptoCurrencyDetailsResponse {
   data: {
@@ -22,7 +22,6 @@ const transformCryptoCurrencyDetailsResponse = (
   response: ICryptoCurrencyDetailsResponse,
 ): ICryptoCurrencyDetails => ({
   id: response.data.id,
-  imageUrl: getImageUrl(response.data.symbol),
   name: response.data.name,
   symbol: response.data.symbol,
   rank: +response.data.rank,
