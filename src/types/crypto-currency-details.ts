@@ -5,7 +5,7 @@ export interface ICryptoCurrencyDetails {
   rank: number
   price: number
   supply: number
-  maxSupply: number
+  maxSupply: number | null
   capitalization: number
   changePercent24Hr: number
 }

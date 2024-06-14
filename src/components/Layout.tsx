@@ -22,7 +22,7 @@ export const Layout = ({ children, error, isLoading }: ILayoutProps) => {
   return (
     <>
       <div className="border-b">
-        <div className="container mx-auto py-3">
+        <div className="container mx-auto py-4">
           <NavBar />
         </div>
       </div>

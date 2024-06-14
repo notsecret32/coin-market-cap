@@ -1,7 +1,7 @@
 interface IModalProps {
   title: string
   isOpen: boolean
-  children: React.ReactNode
+  children?: React.ReactNode
   onClose?: (e: React.MouseEvent<HTMLButtonElement>) => void
 }
 

@@ -1,3 +1,5 @@
+import type { IBriefcase } from './briefcase'
+import type { IBuyCryptoCurrency } from './buy-crypto-currency'
 import type { ICryptoCurrency } from './crypto-currency'
 import type { ICryptoCurrencyChart } from './crypto-currency-chart'
 import type { ICryptoCurrencyChartPoint } from './crypto-currency-chart-point'
@@ -8,6 +10,8 @@ import type { ITableColumn } from './table-column'
 import type { ITableHeader } from './table-header'
 
 export {
+  IBriefcase,
+  IBuyCryptoCurrency,
   ICryptoCurrency,
   ICryptoCurrencyChart,
   ICryptoCurrencyChartPoint,

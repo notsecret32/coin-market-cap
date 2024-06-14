@@ -161,6 +161,7 @@ export const Table = ({ cryptoCurrencies }: ITableProps) => {
         crypto={crypto}
         isOpen={isOpen}
         onClose={closeModal}
+        onTransactionSuccess={closeModal}
       />
     </>
   )

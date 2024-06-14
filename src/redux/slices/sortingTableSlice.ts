@@ -7,8 +7,8 @@ export interface ISortingTableSlice {
 }
 
 const initialState: ISortingTableSlice = {
-  direction: 'asc',
-  column: 'price',
+  direction: 'desc',
+  column: 'capitalization',
 }
 
 export const sortingTableSlice = createSlice({

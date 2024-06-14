@@ -1,8 +1,6 @@
-import { IoBriefcaseOutline } from 'react-icons/io5'
-import { RxHamburgerMenu } from 'react-icons/rx'
 import { useGetCryptoCurrenciesListQuery } from 'src/api/crypto-currencies-list-api'
 import { ReactComponent as Logo } from 'src/assets/svg/logo.svg'
-import { Button } from './Button'
+import { Briefcase } from './Briefcase'
 import { PopularCryptoCurrency } from './PopularCryptoCurrency'
 
 export const NavBar = () => {
@@ -22,19 +20,8 @@ export const NavBar = () => {
         ))}
       </div>
 
-      {/* Burger */}
-      <div className="block sm:hidden">
-        <Button>
-          <RxHamburgerMenu size={24} />
-        </Button>
-      </div>
-
       {/* Briefcase */}
-      <div className="hidden sm:block">
-        <Button>
-          <IoBriefcaseOutline size={24} />
-        </Button>
-      </div>
+      <Briefcase />
     </header>
   )
 }

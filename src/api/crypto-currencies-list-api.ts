@@ -34,21 +34,27 @@ export const cryptoCurrenciesListApi = createApi({
   endpoints: (builder) => ({
     getCryptoCurrenciesList: builder.query<
       ICryptoCurrency[],
-      { start?: number; limit?: number }
+      { ids?: string[]; start?: number; limit?: number }
     >({
-      query: ({ start, limit }) => {
+      query: ({ ids, start, limit }) => {
         const endpoint = '/v2/assets'
 
         let hasParams = false
         let result = endpoint
 
+        if (ids !== undefined) {
+          result += `${hasParams ? '&' : '?'}ids=${ids.join(',')}`
+          hasParams = true
+        }
+
         if (start !== undefined) {
-          result += `?start=${start}`
+          result += `${hasParams ? '&' : '?'}start=${start}`
           hasParams = true
         }
 
         if (limit !== undefined) {
           result += `${hasParams ? '&' : '?'}limit=${limit}`
+          hasParams = true
         }
 
         return result

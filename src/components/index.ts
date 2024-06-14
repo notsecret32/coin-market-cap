@@ -1,3 +1,5 @@
+import { Briefcase } from './Briefcase'
+import { BriefcaseModal } from './BriefcaseModal'
 import { Button } from './Button'
 import { BuyCryptoCurrencyModal } from './BuyCryptoCurrencyModal'
 import { CoinBudge } from './CoinBadge'
@@ -16,6 +18,8 @@ import { TableColumn } from './TableColumn'
 import { TableRow } from './TableRow'
 
 export {
+  Briefcase,
+  BriefcaseModal,
   Button,
   BuyCryptoCurrencyModal,
   CoinBudge,
