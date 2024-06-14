@@ -69,7 +69,7 @@ export const CryptoCurrencyChart = ({ points }: ICryptoCurrencyChartProps) => {
           domain={[(_: number) => min - offset, (_: number) => max + offset]}
         />
 
-        <Tooltip formatter={(value, _, __) => formatNumberWithCommas(+value)} />
+        <Tooltip formatter={(value) => `$${formatNumberWithCommas(+value)}`} />
 
         <CartesianGrid opacity={0.3} />
       </AreaChart>

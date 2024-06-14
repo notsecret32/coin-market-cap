@@ -1,11 +1,11 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 
 export interface ISearchCoinSlice {
-  coinName: string
+  name: string
 }
 
 const initialState: ISearchCoinSlice = {
-  coinName: '',
+  name: '',
 }
 
 export const searchCoinSlice = createSlice({
@@ -16,7 +16,7 @@ export const searchCoinSlice = createSlice({
       state,
       action: PayloadAction<{ coinName: string }>,
     ) => {
-      state.coinName = action.payload.coinName
+      state.name = action.payload.coinName
     },
   },
 })
