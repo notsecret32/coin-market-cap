@@ -1,5 +1,5 @@
 import { TimeIntervalEnum } from 'src/enums'
-import { updateInterval } from 'src/redux/slices/timeIntervalSlice'
+import { updateInterval } from 'src/redux/slices/time-interval-slice'
 import { useAppDispatch, useAppSelector } from 'src/redux/store'
 
 interface ICryptoCurrencyChartIntervalProps {

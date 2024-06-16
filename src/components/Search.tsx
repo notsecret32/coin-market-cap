@@ -1,5 +1,5 @@
 import { HiSearch } from 'react-icons/hi'
-import { updateSearchCoinName } from 'src/redux/slices/searchCoinSlice'
+import { updateSearchCoinName } from 'src/redux/slices/search-coin-slice'
 import { useAppDispatch } from 'src/redux/store'
 
 export const Search = () => {

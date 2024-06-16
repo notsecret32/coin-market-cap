@@ -36,19 +36,16 @@ export const BuyCryptoCurrencyModal = ({
   const handleBuyCryptoClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
 
-    // 1. Проверка наличия объекта details
     if (!details) {
       setError('Не удалось получить данные о монете')
       return
     }
 
-    // 2. Проверка введенного количества монет
     if (cryptoAmount < 1) {
       setError('Минимальное кол-во монет на покупку: 1')
       return
     }
 
-    // Если все проверки пройдены, добавляем криптовалюту в портфель
     dispatch(
       addCryptoToBriefcase({
         coin: {
@@ -65,7 +62,7 @@ export const BuyCryptoCurrencyModal = ({
     onTransactionSuccess?.(e)
   }
 
-  // Update totalPrice whenever cryptoAmount or crypto.price changes
+  // Statistics
   const totalPrice = cryptoAmount * crypto.price
 
   return (

@@ -3,6 +3,9 @@ interface ITableCellProps {
   children?: React.ReactNode
 }
 
-export const TableCell = ({ children, className }: ITableCellProps) => {
+export const CryptoCurrencyTableCell = ({
+  children,
+  className,
+}: ITableCellProps) => {
   return <td className={`font-inter py-3 ${className}`}>{children}</td>
 }
