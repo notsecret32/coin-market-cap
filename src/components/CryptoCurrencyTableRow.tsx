@@ -4,7 +4,11 @@ interface ITableRowProps {
   children?: React.ReactNode
 }
 
-export const TableRow = ({ children, className, onClick }: ITableRowProps) => {
+export const CryptoCurrencyTableRow = ({
+  children,
+  className,
+  onClick,
+}: ITableRowProps) => {
   return (
     <tr
       className={`border-b border-[#f0f1f6] hover:bg-[#e7e7e9] cursor-pointer ${className}`}

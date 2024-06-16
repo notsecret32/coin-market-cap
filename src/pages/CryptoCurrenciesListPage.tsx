@@ -1,4 +1,4 @@
-import { Button, Layout, Search, Table } from 'src/components'
+import { Button, CryptoCurrencyTable, Layout, Search } from 'src/components'
 import { useCryptoCurrenciesList, useSortTableColumn } from 'src/hooks'
 import {
   nextPage,
@@ -38,10 +38,15 @@ export const CryptoCurrenciesListPage = () => {
 
   return (
     <Layout error={error} isLoading={isLoading}>
+      {/* Search Bar */}
       <div className="my-3">
         <Search />
       </div>
-      <Table cryptoCurrencies={finalData} />
+
+      {/* The Cryptocurrency Table */}
+      <CryptoCurrencyTable cryptoCurrencies={finalData} />
+
+      {/* Navigation buttons */}
       <div className="flex flex-row justify-center items-center gap-4 my-4">
         <Button
           className={isStartReached ? 'hidden' : 'block'}

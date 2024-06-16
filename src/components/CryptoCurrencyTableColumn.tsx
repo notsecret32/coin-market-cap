@@ -10,7 +10,7 @@ interface ITableColumnProps {
   children?: React.ReactNode
 }
 
-export const TableColumn = ({
+export const CryptoCurrencyTableColumn = ({
   children,
   className,
   position,
