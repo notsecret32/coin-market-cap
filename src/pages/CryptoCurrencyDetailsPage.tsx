@@ -51,25 +51,29 @@ export const CryptoCurrencyDetailsPage = () => {
       {/* Chart */}
       <CryptoCurrencyChart points={data.points} />
 
-      {/* Statistics */}
-      <div className="flex flex-col mt-auto mb-16 gap-y-4">
-        <h2 className="font-inter font-semibold text-sm">Статистика</h2>
-        <CoinStatisticItem label="Ранг" value={data.rank} />
-        <CoinStatisticItem
-          label="Общий запас"
-          value={formatNumberWithCommas(data.supply)}
-          symbol={data.symbol}
-        />
-        <CoinStatisticItem
-          label="Макс. запас"
-          value={formatNumberWithCommas(data.maxSupply)}
-          symbol={data.symbol}
-        />
-        <CoinStatisticItem
-          label="Капитализация"
-          prefix="$"
-          value={formatNumberWithCommas(data.capitalization)}
-        />
+      {/* Statistics Block */}
+      <div className="container mx-auto mt-4">
+        <h2 className="font-inter font-semibold text-lg mb-2 text-center">
+          Статистика
+        </h2>
+        <div className="flex flex-col gap-y-4">
+          <CoinStatisticItem label="Ранг" value={data.rank} />
+          <CoinStatisticItem
+            label="Общий запас"
+            value={formatNumberWithCommas(data.supply)}
+            symbol={data.symbol}
+          />
+          <CoinStatisticItem
+            label="Макс. запас"
+            value={formatNumberWithCommas(data.maxSupply)}
+            symbol={data.symbol}
+          />
+          <CoinStatisticItem
+            label="Капитализация"
+            prefix="$"
+            value={formatNumberWithCommas(data.capitalization)}
+          />
+        </div>
       </div>
     </Layout>
   )
