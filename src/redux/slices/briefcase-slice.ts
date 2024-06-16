@@ -1,5 +1,6 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { BRIEFCASE_LOCAL_STORAGE_KEY } from 'src/constants/local-storage-keys'
+import { emitLocalStorageChangeEvent } from 'src/hooks/use-local-storage'
 import { IBuyCryptoCurrency } from 'src/types'
 
 export interface IBriefcaseSlice {
@@ -7,9 +8,25 @@ export interface IBriefcaseSlice {
   amount: number
 }
 
+// Получаем данные из localStorage
+function loadState(key: string) {
+  try {
+    const serializedState = localStorage.getItem(key)
+    if (serializedState === null) {
+      return undefined
+    }
+    return JSON.parse(serializedState)
+  } catch (err) {
+    console.error('Не удалось загрузить состояние:', err)
+    return undefined
+  }
+}
+
+const savedState = loadState(BRIEFCASE_LOCAL_STORAGE_KEY)
+
 const initialState: IBriefcaseSlice = {
-  coins: [],
-  amount: 0,
+  coins: savedState?.coins || [],
+  amount: savedState?.amount || 0,
 }
 
 export const briefcaseSlice = createSlice({
@@ -22,12 +39,14 @@ export const briefcaseSlice = createSlice({
         coin: IBuyCryptoCurrency
       }>,
     ) => {
-      const existingCoin = state.coins.find(
+      const coinIndex = state.coins.findIndex(
         (coin) => coin.id === action.payload.coin.id,
       )
-      if (existingCoin) {
-        existingCoin.amount += action.payload.coin.amount
-        existingCoin.totalPrice = existingCoin.amount * existingCoin.price
+
+      if (coinIndex !== -1) {
+        state.coins[coinIndex].amount += action.payload.coin.amount
+        state.coins[coinIndex].totalPrice =
+          state.coins[coinIndex].amount * state.coins[coinIndex].price
       } else {
         state.coins.push(action.payload.coin)
       }
@@ -44,6 +63,8 @@ export const briefcaseSlice = createSlice({
           amount: state.amount,
         }),
       )
+
+      emitLocalStorageChangeEvent()
     },
   },
 })
