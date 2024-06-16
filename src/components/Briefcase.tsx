@@ -35,9 +35,19 @@ export const Briefcase = () => {
         className="flex flex-row items-center gap-1 cursor-pointer"
         onClick={() => setIsOpen(true)}
       >
-        <div>${formatShortNumber(briefcase?.amount)}</div>
-        <div>{formatShortNumber(profit)}</div>
-        <div>({formatShortNumber(percent)}%)</div>
+        <div>
+          <h1 className="text-sm sm:text-base">
+            ${formatShortNumber(briefcase?.amount)}
+          </h1>
+        </div>
+        <div>
+          <h1 className="text-sm sm:text-base">{formatShortNumber(profit)}</h1>
+        </div>
+        <div>
+          <h1 className="text-sm sm:text-base">
+            ({formatShortNumber(percent)}%)
+          </h1>
+        </div>
       </div>
       <BriefcaseModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
     </>
