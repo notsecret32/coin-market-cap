@@ -66,7 +66,37 @@ export const briefcaseSlice = createSlice({
 
       emitLocalStorageChangeEvent()
     },
+    removeCryptoFromBriefcase: (
+      state,
+      action: PayloadAction<{ id: string }>,
+    ) => {
+      const coinIndex = state.coins.findIndex(
+        (coin) => coin.id === action.payload.id,
+      )
+
+      if (coinIndex !== -1) {
+        state.coins = state.coins.filter(
+          (coin) => coin.id !== state.coins[coinIndex].id,
+        )
+      }
+
+      state.amount = state.coins.reduce(
+        (prev, curr) => prev + curr.totalPrice,
+        0,
+      )
+
+      localStorage.setItem(
+        BRIEFCASE_LOCAL_STORAGE_KEY,
+        JSON.stringify({
+          coins: state.coins,
+          amount: state.amount,
+        }),
+      )
+
+      emitLocalStorageChangeEvent()
+    },
   },
 })
 
-export const { addCryptoToBriefcase } = briefcaseSlice.actions
+export const { addCryptoToBriefcase, removeCryptoFromBriefcase } =
+  briefcaseSlice.actions
