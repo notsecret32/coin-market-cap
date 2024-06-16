@@ -3,6 +3,9 @@ import { TimeIntervalEnum } from 'src/enums'
 import { ICryptoCurrencyChart, ICryptoCurrencyDetails } from 'src/types'
 import { rtkBaseQuery } from 'src/utils'
 
+/**
+ * The data type representing the returned data from the API.
+ */
 interface ICryptoCurrencyDetailsResponse {
   data: {
     id: string
@@ -18,6 +21,11 @@ interface ICryptoCurrencyDetailsResponse {
   }
 }
 
+/**
+ * Method for converting data from API to object
+ *
+ * @param {ICryptoCurrenciesListResponse} response - Data from the request API
+ */
 const transformCryptoCurrencyDetailsResponse = (
   response: ICryptoCurrencyDetailsResponse,
 ): ICryptoCurrencyDetails => ({
@@ -32,15 +40,26 @@ const transformCryptoCurrencyDetailsResponse = (
   changePercent24Hr: +response.data.changePercent24Hr,
 })
 
+/**
+ * The data type representing the returned data from the API.
+ */
 interface ICryptoCurrencyChartPointResponse {
   priceUsd: string
   time: number
 }
 
+/**
+ * The data type representing the returned data from the API.
+ */
 interface ICryptoCurrencyChartResponse {
   data: ICryptoCurrencyChartPointResponse[]
 }
 
+/**
+ * Method for converting data from API to object
+ *
+ * @param {ICryptoCurrenciesListResponse} response - Data from the request API
+ */
 const transformCryptoCurrencyChartResponse = (
   response: ICryptoCurrencyChartResponse,
 ): ICryptoCurrencyChart => ({
@@ -51,10 +70,19 @@ const transformCryptoCurrencyChartResponse = (
   })),
 })
 
+/**
+ * Receives detailed data about a specific coin, as well as a price change
+ * chart.
+ */
 export const cryptoCurrencyDetailsApi = createApi({
   reducerPath: 'cryptoCurrencyDetailsApi',
   baseQuery: rtkBaseQuery(),
   endpoints: (builder) => ({
+    /**
+     * Returns detailed data for a specific cryptocurrency.
+     *
+     * @param {string} id - The ID of the cryptocurrency to get the data for.
+     */
     getCryptoCurrencyDetails: builder.query<
       ICryptoCurrencyDetails,
       { id: string }
@@ -63,6 +91,13 @@ export const cryptoCurrencyDetailsApi = createApi({
       transformResponse: (response: ICryptoCurrencyDetailsResponse) =>
         transformCryptoCurrencyDetailsResponse(response),
     }),
+    /**
+     * Returns a price chart for a specific cryptocurrency.
+     *
+     * @param {string} id - The ID of the cryptocurrency to get the data for.
+     * @param {TimeIntervalEnum} interval - The interval for which data on
+     * price changes should be received.
+     */
     getCryptoCurrencyChart: builder.query<
       ICryptoCurrencyChart,
       { id: string; interval: TimeIntervalEnum }

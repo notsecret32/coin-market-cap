@@ -2,6 +2,9 @@ import { useAppSelector } from 'src/redux/store'
 import { ICryptoCurrency, SortableTableColumn } from 'src/types'
 import { useCryptoCurrenciesList } from './use-crypto-currencies-list'
 
+/**
+ * A hook for sorting table columns.
+ */
 export const useSortTableColumn = () => {
   const { data: coins } = useCryptoCurrenciesList()
   const { name } = useAppSelector((state) => state.searchCoinSlice)

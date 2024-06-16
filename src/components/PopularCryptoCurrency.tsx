@@ -11,10 +11,10 @@ export const PopularCryptoCurrency = ({
 }: IPopularCryptoCurrency) => {
   return (
     <div className="flex flex-row items-end gap-1">
-      <h1 className="font-inter font-medium text-sm text-[#85879f]">
+      <h1 className="font-inter font-medium text-xs md:text-sm text-[#85879f]">
         {symbol}
       </h1>
-      <h2>${formatShortNumber(price)}</h2>
+      <h2 className="text-sm md:text-base">${formatShortNumber(price)}</h2>
     </div>
   )
 }

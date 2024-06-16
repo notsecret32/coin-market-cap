@@ -14,7 +14,7 @@ export const NavBar = () => {
       <Logo />
 
       {/* Top Coins */}
-      <div className="hidden sm:flex flex-row gap-4 md:gap-8 lg:gap-16 xl:gap-24">
+      <div className="hidden sm:flex flex-row gap-2 md:gap-8 lg:gap-16 xl:gap-24">
         {data?.map((coin) => (
           <PopularCryptoCurrency key={coin.name} {...coin} />
         ))}
