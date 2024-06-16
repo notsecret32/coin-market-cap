@@ -1,3 +1,6 @@
+/**
+ * Listing all available intervals for the price change chart.
+ */
 export enum TimeIntervalEnum {
   m1 = 'm1',
   m5 = 'm5',

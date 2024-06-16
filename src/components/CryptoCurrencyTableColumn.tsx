@@ -1,5 +1,5 @@
 import { TiArrowSortedDown, TiArrowSortedUp } from 'react-icons/ti'
-import { setSortingColumn } from 'src/redux/slices/sortingTableSlice'
+import { setSortingColumn } from 'src/redux/slices/sorting-table-slice'
 import { useAppDispatch, useAppSelector } from 'src/redux/store'
 import { SortDirection, SortableTableColumn } from 'src/types'
 
@@ -10,7 +10,7 @@ interface ITableColumnProps {
   children?: React.ReactNode
 }
 
-export const TableColumn = ({
+export const CryptoCurrencyTableColumn = ({
   children,
   className,
   position,

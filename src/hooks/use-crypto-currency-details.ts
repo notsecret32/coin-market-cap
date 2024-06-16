@@ -9,6 +9,9 @@ interface IUseCryptoCurrencyDetails {
   interval: TimeIntervalEnum
 }
 
+/**
+ * Returns detailed data about the cryptocurrency with a price change chart.
+ */
 export const useCryptoCurrencyDetails = ({
   id,
   interval,

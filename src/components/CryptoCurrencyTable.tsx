@@ -5,9 +5,9 @@ import { useNavigate } from 'react-router-dom'
 import {
   Button,
   BuyCryptoCurrencyModal,
-  TableCell,
-  TableColumn,
-  TableRow,
+  CryptoCurrencyTableCell,
+  CryptoCurrencyTableColumn,
+  CryptoCurrencyTableRow,
 } from 'src/components'
 import { ICryptoCurrency } from 'src/types'
 import { formatShortNumber, getImageUrl } from 'src/utils'
@@ -16,7 +16,7 @@ interface ITableProps {
   cryptoCurrencies: ICryptoCurrency[] | undefined
 }
 
-export const Table = ({ cryptoCurrencies }: ITableProps) => {
+export const CryptoCurrencyTable = ({ cryptoCurrencies }: ITableProps) => {
   // Navigation
   const navigate = useNavigate()
 
@@ -56,36 +56,36 @@ export const Table = ({ cryptoCurrencies }: ITableProps) => {
         <table className="w-full min-w-[600px]">
           <thead className="text-sm border-t border-b border-[#f0f1f6]">
             <tr>
-              <TableColumn className="justify-center w-0"></TableColumn>
-              <TableColumn className="justify-start sm:table-cell">
+              <CryptoCurrencyTableColumn className="justify-center w-0"></CryptoCurrencyTableColumn>
+              <CryptoCurrencyTableColumn className="justify-start sm:table-cell">
                 Название
-              </TableColumn>
-              <TableColumn
+              </CryptoCurrencyTableColumn>
+              <CryptoCurrencyTableColumn
                 sortColumn="price"
                 className="sm:text-right cursor-pointer"
                 position="justify-start sm:justify-end"
               >
                 Цена
-              </TableColumn>
-              <TableColumn
+              </CryptoCurrencyTableColumn>
+              <CryptoCurrencyTableColumn
                 sortColumn="capitalization"
                 className="sm:text-right cursor-pointer"
                 position="justify-start sm:justify-end"
               >
                 Капитализация
-              </TableColumn>
-              <TableColumn
+              </CryptoCurrencyTableColumn>
+              <CryptoCurrencyTableColumn
                 sortColumn="changePercent24Hr"
                 className="text-right justify-end cursor-pointer"
                 position="justify-end"
               >
                 24ч %
-              </TableColumn>
+              </CryptoCurrencyTableColumn>
             </tr>
           </thead>
           <tbody>
             {!cryptoCurrencies ? (
-              <TableRow>Нет данных</TableRow>
+              <CryptoCurrencyTableRow>Нет данных</CryptoCurrencyTableRow>
             ) : (
               cryptoCurrencies.map(
                 ({
@@ -96,9 +96,12 @@ export const Table = ({ cryptoCurrencies }: ITableProps) => {
                   capitalization,
                   changePercent24Hr,
                 }) => (
-                  <TableRow key={id} onClick={() => navigateToPage(id)}>
+                  <CryptoCurrencyTableRow
+                    key={id}
+                    onClick={() => navigateToPage(id)}
+                  >
                     {/* Add Button */}
-                    <TableCell className="px-2">
+                    <CryptoCurrencyTableCell className="px-2">
                       <Button
                         onClick={(e) =>
                           openModal(e, {
@@ -113,10 +116,10 @@ export const Table = ({ cryptoCurrencies }: ITableProps) => {
                       >
                         <IoMdAdd />
                       </Button>
-                    </TableCell>
+                    </CryptoCurrencyTableCell>
 
                     {/* Crypto Currency Card Name */}
-                    <TableCell className="flex flex-row items-center gap-2">
+                    <CryptoCurrencyTableCell className="flex flex-row items-center gap-2">
                       <img
                         src={getImageUrl(symbol)}
                         alt={name}
@@ -125,20 +128,20 @@ export const Table = ({ cryptoCurrencies }: ITableProps) => {
                       />
                       <h1>{name}</h1>
                       <p className="text-[#58667E]">{symbol}</p>
-                    </TableCell>
+                    </CryptoCurrencyTableCell>
 
                     {/* Price */}
-                    <TableCell className="text-left sm:text-right">
+                    <CryptoCurrencyTableCell className="text-left sm:text-right">
                       ${formatShortNumber(price)}
-                    </TableCell>
+                    </CryptoCurrencyTableCell>
 
                     {/* Capitalization */}
-                    <TableCell className="text-left sm:text-right">
+                    <CryptoCurrencyTableCell className="text-left sm:text-right">
                       ${formatShortNumber(capitalization)}
-                    </TableCell>
+                    </CryptoCurrencyTableCell>
 
                     {/* Percent Change 24H */}
-                    <TableCell
+                    <CryptoCurrencyTableCell
                       className={`text-right py-3 ${changePercent24Hr >= 0 ? 'text-[#61ce78]' : 'text-[#cf3d4c]'}`}
                     >
                       <div className="flex flex-row justify-end items-center">
@@ -149,8 +152,8 @@ export const Table = ({ cryptoCurrencies }: ITableProps) => {
                         )}
                         <p>{Math.abs(changePercent24Hr).toFixed(2)}%</p>
                       </div>
-                    </TableCell>
-                  </TableRow>
+                    </CryptoCurrencyTableCell>
+                  </CryptoCurrencyTableRow>
                 ),
               )
             )}

@@ -1,8 +1,8 @@
 import { briefcaseSlice } from './briefcase-slice'
-import { homePageSlice } from './homePageSlice'
-import { searchCoinSlice } from './searchCoinSlice'
-import { sortingTableSlice } from './sortingTableSlice'
-import { timeIntervalSlice } from './timeIntervalSlice'
+import { homePageSlice } from './home-page-slice'
+import { searchCoinSlice } from './search-coin-slice'
+import { sortingTableSlice } from './sorting-table-slice'
+import { timeIntervalSlice } from './time-interval-slice'
 
 export {
   briefcaseSlice,
