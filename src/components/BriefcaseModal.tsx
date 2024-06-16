@@ -46,55 +46,59 @@ export const BriefcaseModal = ({ isOpen, onClose }: IBriefcaseModalProps) => {
       onClose={onClose}
     >
       {briefcase?.coins && briefcase.coins.length > 0 ? (
-        <table className="w-full">
-          <thead>
-            <tr className="text-white">
-              <th className="text-start">Название</th>
-              <th className="text-start">Цена</th>
-              <th className="text-start">Кол-во</th>
-              <th className="text-start">Общая цена</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {/* Briefcase Coins */}
-            {briefcase.coins
-              .sort((a, b) => b.price - a.price)
-              .map(({ id, name, amount, price, totalPrice }) => (
-                <tr key={id}>
-                  <td className="py-1">
-                    <h2>{name}</h2>
-                  </td>
-                  <td className="py-1">
-                    <h2>${formatNumberWithCommas(price)}</h2>
-                  </td>
-                  <td className="py-1">
-                    <h2>{amount}</h2>
-                  </td>
-                  <td className="py-1">
-                    <h2>${formatNumberWithCommas(totalPrice)}</h2>
-                  </td>
-                  <td className="py-1">
-                    <IoMdRemoveCircleOutline
-                      onClick={(e) => handleRemoveCrypto(e, id)}
-                      className="cursor-pointer hover:text-slate-200"
-                      size={24}
-                    />
-                  </td>
-                </tr>
-              ))}
+        <div className="overflow-x-auto lg:overflow-x-visible">
+          <table className="w-full ">
+            <thead>
+              <tr className="text-white">
+                <th className="text-md lg:text-lg text-start px-1">Название</th>
+                <th className="text-md lg:text-lg text-start px-1">Цена</th>
+                <th className="text-md lg:text-lg text-start px-1">Кол-во</th>
+                <th className="text-md lg:text-lg text-start px-1">
+                  Общая цена
+                </th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {/* Briefcase Coins */}
+              {briefcase.coins
+                .sort((a, b) => b.price - a.price)
+                .map(({ id, name, amount, price, totalPrice }) => (
+                  <tr key={id}>
+                    <td className="py-1 text-md lg:text-lg px-1">{name}</td>
+                    <td className="py-1 text-md lg:text-lg px-1">
+                      ${formatNumberWithCommas(price)}
+                    </td>
+                    <td className="py-1 text-md lg:text-lg px-1">{amount}</td>
+                    <td className="py-1 text-md lg:text-lg px-1">
+                      ${formatNumberWithCommas(totalPrice)}
+                    </td>
+                    <td className="py-1">
+                      <IoMdRemoveCircleOutline
+                        onClick={(e) => handleRemoveCrypto(e, id)}
+                        className="cursor-pointer hover:text-slate-200"
+                        size={24}
+                      />
+                    </td>
+                  </tr>
+                ))}
 
-            {/* Briefcase Statistics */}
-            <tr className="text-white border-t">
-              <td className="py-1"></td>
-              <td className="py-1">${formatNumberWithCommas(priceAmount)}</td>
-              <td className="py-1">{totalCoinAmount}</td>
-              <td className="py-1">
-                ${formatNumberWithCommas(totalPriceAmount)}
-              </td>
-            </tr>
-          </tbody>
-        </table>
+              {/* Briefcase Statistics */}
+              <tr className="text-white border-t">
+                <td className="py-1 text-md lg:text-lg px-1"></td>
+                <td className="py-1 text-md lg:text-lg px-1">
+                  ${formatNumberWithCommas(priceAmount)}
+                </td>
+                <td className="py-1 text-md lg:text-lg px-1">
+                  {totalCoinAmount}
+                </td>
+                <td className="py-1 text-md lg:text-lg px-1">
+                  ${formatNumberWithCommas(totalPriceAmount)}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       ) : (
         <div>
           <p>Портфель пустой, добавьте монеты, чтобы они здесь появились.</p>
