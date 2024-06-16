@@ -1,23 +1,26 @@
 import { useCallback, useEffect, useState } from 'react'
 import { LOCAL_STORAGE_CHANGE_EVENT } from 'src/constants/local-storage-keys'
 
+/**
+ * A hook for working with `localStorage`.
+ */
 export const useLocalStorage = (key: string) => {
   const [value, setValue] = useState(localStorage.getItem(key))
 
-  // Функция для обновления состояния
+  // A function for updating the state
   const onLocalStorageChange = useCallback(() => {
     setValue(localStorage.getItem(key))
   }, [key])
 
   useEffect(() => {
-    // Обработчик события storage для внешних изменений
+    // Storage event handler for external changes
     const handleStorageChange = (event: StorageEvent) => {
       if (event.key === key) {
         onLocalStorageChange()
       }
     }
 
-    // Обработчик кастомного события для внутренних изменений
+    // Custom event handler for internal changes
     const handleCustomStorageChange = () => {
       onLocalStorageChange()
     }
@@ -28,7 +31,7 @@ export const useLocalStorage = (key: string) => {
       handleCustomStorageChange,
     )
 
-    // Отписываемся от событий при размонтировании компонента
+    // Unsubscribe from events when unmounting a component
     return () => {
       window.removeEventListener('storage', handleStorageChange)
       window.removeEventListener(
@@ -41,7 +44,9 @@ export const useLocalStorage = (key: string) => {
   return value
 }
 
-// Функция для вызова кастомного события после изменения localStorage
+/**
+ * A function for calling a custom event after changing the `localStorage`.
+ */
 export const emitLocalStorageChangeEvent = () => {
   window.dispatchEvent(new Event(LOCAL_STORAGE_CHANGE_EVENT))
 }

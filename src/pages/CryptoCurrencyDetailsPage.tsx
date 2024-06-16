@@ -11,16 +11,18 @@ import { useAppSelector } from 'src/redux/store'
 import { formatNumberWithCommas, getImageUrl } from 'src/utils'
 
 export const CryptoCurrencyDetailsPage = () => {
+  // Navigation
   const { id } = useParams()
-
   const navigate = useNavigate()
 
   if (!id || id === undefined) {
     navigate(-1)
   }
 
+  // Redux
   const { interval } = useAppSelector((state) => state.timeIntervalSlice)
 
+  // Hooks
   const { data, error, isLoading } = useCryptoCurrencyDetails({
     id: id!,
     interval: interval,

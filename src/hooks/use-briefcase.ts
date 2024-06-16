@@ -3,20 +3,20 @@ import { IBriefcase } from 'src/types'
 import { useLocalStorage } from './use-local-storage'
 
 /**
- * Следит за обновлением данных в localStorage по определенному ключу.
+ * Monitors data updates in localStorage by a specific key.
  */
 export const useBriefcase = () => {
-  // Получаем данные их localStorage и подписываемся на изменения
+  // Get data from `localStorage` and subscribe to changes
   const data = useLocalStorage(BRIEFCASE_LOCAL_STORAGE_KEY)
 
-  // Проверяем наличие данных
+  // Checking the availability of data
   if (!data) {
     return {
       briefcase: undefined,
     }
   }
 
-  // Конвертируем строку в объект
+  // Converting a string to an object
   const briefcase = JSON.parse(data) as IBriefcase
 
   return {

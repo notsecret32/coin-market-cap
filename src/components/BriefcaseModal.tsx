@@ -11,14 +11,19 @@ interface IBriefcaseModalProps {
 }
 
 export const BriefcaseModal = ({ isOpen, onClose }: IBriefcaseModalProps) => {
+  // Redux
   const dispatch = useAppDispatch()
+
+  // Hooks
   const { briefcase } = useBriefcase()
 
+  // Methods
   const handleRemoveCrypto = (e: React.MouseEvent<SVGElement>, id: string) => {
     e.preventDefault()
     dispatch(removeCryptoFromBriefcase({ id }))
   }
 
+  // Statistics
   const priceAmount = briefcase?.coins.reduce(
     (prev, curr) => (prev += curr.price),
     0,
@@ -52,6 +57,7 @@ export const BriefcaseModal = ({ isOpen, onClose }: IBriefcaseModalProps) => {
             </tr>
           </thead>
           <tbody>
+            {/* Briefcase Coins */}
             {briefcase.coins
               .sort((a, b) => b.price - a.price)
               .map(({ id, name, amount, price, totalPrice }) => (
@@ -77,6 +83,8 @@ export const BriefcaseModal = ({ isOpen, onClose }: IBriefcaseModalProps) => {
                   </td>
                 </tr>
               ))}
+
+            {/* Briefcase Statistics */}
             <tr className="text-white border-t">
               <td className="py-1"></td>
               <td className="py-1">${formatNumberWithCommas(priceAmount)}</td>

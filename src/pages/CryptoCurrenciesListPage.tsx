@@ -4,7 +4,7 @@ import {
   nextPage,
   previousPage,
   setEndReached,
-} from 'src/redux/slices/homePageSlice'
+} from 'src/redux/slices/home-page-slice'
 import { useAppDispatch, useAppSelector } from 'src/redux/store'
 
 export const CryptoCurrenciesListPage = () => {

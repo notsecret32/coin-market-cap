@@ -5,12 +5,16 @@ import { formatShortNumber } from 'src/utils'
 import { BriefcaseModal } from './BriefcaseModal'
 
 export const Briefcase = () => {
+  // React State
   const [isOpen, setIsOpen] = useState(false)
+
+  // Hooks
   const { briefcase } = useBriefcase()
   const { data: freshCoins } = useGetCryptoCurrenciesListQuery({
     ids: briefcase?.coins.map((coin) => coin.id),
   })
 
+  // Statistics
   const freshCoinsTotalPrice = freshCoins?.reduce((prev, curr) => {
     const coinAmount = briefcase?.coins.find(
       (coin) => coin.id === curr.id,

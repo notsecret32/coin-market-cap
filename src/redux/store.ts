@@ -12,9 +12,11 @@ import {
 
 export const store = configureStore({
   reducer: {
+    // API
     [cryptoCurrenciesListApi.reducerPath]: cryptoCurrenciesListApi.reducer,
     [cryptoCurrencyDetailsApi.reducerPath]: cryptoCurrencyDetailsApi.reducer,
 
+    // Local
     sortingTableSlice: sortingTableSlice.reducer,
     homePageSlice: homePageSlice.reducer,
     searchCoinSlice: searchCoinSlice.reducer,
